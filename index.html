@@ -24,6 +24,10 @@ box-sizing:border-box;
 font-family:system-ui,-apple-system,Segoe UI,Roboto;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 background:var(--dark);
 color:var(--text);
@@ -52,7 +56,7 @@ justify-content:space-between;
 }
 
 .logo img{
-height:70px;
+height:120px;
 }
 
 .menu{
@@ -74,9 +78,20 @@ color:var(--primary);
 /* HERO */
 
 .hero{
-padding:70px 20px;
+padding:60px 20px;
 text-align:center;
 background:linear-gradient(180deg,#000,#0c0c0c);
+animation:fadeIn 1s ease;
+}
+
+.banner{
+background:var(--primary);
+color:white;
+padding:10px;
+border-radius:8px;
+display:inline-block;
+margin-bottom:20px;
+font-weight:600;
 }
 
 .hero h1{
@@ -107,6 +122,7 @@ background:var(--primary-light);
 
 .section{
 padding:60px 0;
+animation:fadeUp 1s ease;
 }
 
 .section-header{
@@ -155,6 +171,52 @@ border-radius:12px;
 margin-bottom:12px;
 }
 
+/* MAPA */
+
+.map{
+border-radius:18px;
+overflow:hidden;
+margin-top:20px;
+}
+
+/* WHATSAPP FLOAT */
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+width:60px;
+height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+text-decoration:none;
+box-shadow:0 5px 20px rgba(0,0,0,.3);
+z-index:999;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 footer{
 border-top:1px solid rgba(255,255,255,.05);
 text-align:center;
@@ -178,7 +240,7 @@ color:var(--muted);
 <a href="#inicio">Inicio</a>
 <a href="#servicios">Servicios</a>
 <a href="#trabajos">Trabajos</a>
-<a href="#contacto">Contacto</a>
+<a href="#contacto">Ubicación</a>
 <a class="btn" href="https://wa.me/56977956214">WhatsApp</a>
 </nav>
 
@@ -188,9 +250,13 @@ color:var(--muted);
 <section class="hero" id="inicio">
 <div class="container">
 
+<div class="banner">
+Duplicado de controles desde $15.000
+</div>
+
 <h1>Duplicado y programación de controles</h1>
 
-<p>Controles automotrices, portones eléctricos y mandos remotos</p>
+<p>Automotriz • Portones eléctricos • Mandos remotos</p>
 
 <a class="btn" href="https://wa.me/56977956214">
 Solicitar cotización
@@ -234,7 +300,6 @@ Solicitar cotización
 
 <div class="section-header">
 <h2>Trabajos reales</h2>
-<p>Servicios realizados recientemente</p>
 </div>
 
 <div class="grid">
@@ -242,17 +307,17 @@ Solicitar cotización
 <div class="gallery-card">
 <img src="duplicado-hyundai-tucson-2010.jpg">
 <h3>Hyundai Tucson 2010</h3>
-<p>Duplicado de control con programación y prueba.</p>
+<p>Duplicado con programación.</p>
 </div>
 
 <div class="gallery-card">
 <h3>Controles portón</h3>
-<p>Duplicado y configuración de controles residenciales.</p>
+<p>Duplicado residencial.</p>
 </div>
 
 <div class="gallery-card">
 <h3>Programación automotriz</h3>
-<p>Programación de mandos con verificación.</p>
+<p>Programación completa.</p>
 </div>
 
 </div>
@@ -264,14 +329,24 @@ Solicitar cotización
 <div class="container">
 
 <div class="section-header">
-<h2>Contacto</h2>
+<h2>Ubicación</h2>
 <p>Tucapel 866, Concepción</p>
 </div>
 
-<div style="text-align:center">
-<a class="btn" href="https://wa.me/56977956214">
-Contactar por WhatsApp
+<div style="text-align:center;margin-bottom:20px">
+<a class="btn" target="_blank"
+href="https://maps.google.com/?q=Tucapel+866+Concepcion">
+Cómo llegar en Google Maps
 </a>
+</div>
+
+<div class="map">
+<iframe
+src="https://maps.google.com/maps?q=Tucapel%20866%20Concepcion&t=&z=15&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="350"
+style="border:0;">
+</iframe>
 </div>
 
 </div>
@@ -280,6 +355,12 @@ Contactar por WhatsApp
 <footer>
 Controles Concepción © 2026
 </footer>
+
+<a class="whatsapp"
+href="https://wa.me/56977956214"
+target="_blank">
+💬
+</a>
 
 </body>
 </html>
