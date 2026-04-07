@@ -7,16 +7,16 @@
   <meta name="description" content="Copia y programación de controles para portones eléctricos, vehículos y cierres centralizados en Concepción. Atención presencial y coordinación en terreno según disponibilidad." />
   <style>
     :root {
-      --bg: #0c0c0c;
-      --bg-soft: #151515;
-      --card: rgba(255,147,67,0.06);
-      --line: rgba(255,255,255,0.10);
-      --text: #f7f5f2;
-      --muted: #d8c1b2;
-      --accent: #f07d2f;
-      --accent-dark: #d66a24;
-      --accent-deep: #9a4618;
-      --accent-brown: #5b240d;
+      --bg: #08070d;
+      --bg-soft: #101014;
+      --card: rgba(255,255,255,0.035);
+      --line: rgba(255,255,255,0.08);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #f97316;
+      --accent-dark: #ea580c;
+      --accent-deep: #c2410c;
+      --accent-brown: #7c2d12;
       --success: #25d366;
       --shadow: 0 20px 60px rgba(0,0,0,0.35);
       --radius: 24px;
@@ -29,10 +29,9 @@
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(240,125,47,0.30), transparent 24%),
-        radial-gradient(circle at 12% 10%, rgba(214,106,36,0.22), transparent 20%),
-        radial-gradient(circle at 70% 35%, rgba(154,70,24,0.16), transparent 22%),
-        linear-gradient(180deg, #090705 0%, #0d0a08 42%, #130d0a 100%);
+        radial-gradient(circle at top right, rgba(249,115,22,0.18), transparent 24%),
+        radial-gradient(circle at 12% 10%, rgba(249,115,22,0.10), transparent 18%),
+        linear-gradient(180deg, #08070d 0%, #0b0a10 46%, #101014 100%);
       color: var(--text);
     }
 
@@ -49,7 +48,7 @@
       top: 0;
       z-index: 100;
       backdrop-filter: blur(12px);
-      background: rgba(12, 12, 12, 0.84);
+      background: rgba(8, 7, 13, 0.9);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -128,7 +127,7 @@
     }
 
     .btn {
-      background: linear-gradient(135deg, #f07d2f, #ff9b47);
+      background: linear-gradient(135deg, #f97316, #fb923c);
       color: #1c1009;
       box-shadow: var(--shadow);
     }
@@ -140,7 +139,7 @@
     }
 
     .btn-whatsapp {
-      background: var(--success);
+      background: linear-gradient(135deg, #22c55e, #25d366);
       color: #08230f;
       box-shadow: var(--shadow);
     }
@@ -161,9 +160,9 @@
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
-      border: 1px solid rgba(240,125,47,0.34);
+      border: 1px solid rgba(249,115,22,0.24);
       border-radius: 999px;
-      background: rgba(240,125,47,0.16);
+      background: rgba(249,115,22,0.12);
       color: #ffd7bf;
       font-size: 0.9rem;
       margin-bottom: 18px;
@@ -205,13 +204,13 @@
       border: 1px solid var(--line);
       border-radius: 999px;
       color: var(--muted);
-      background: rgba(255,255,255,0.03);
+      background: rgba(16,16,20,0.76);
       font-size: 0.92rem;
     }
 
     .hero-card,
     .promo-box {
-      background: linear-gradient(180deg, rgba(255,153,78,0.10), rgba(255,255,255,0.03));
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
       border: 1px solid var(--line);
       border-radius: 30px;
       padding: 28px;
@@ -227,7 +226,7 @@
       inset: auto -50px -60px auto;
       width: 190px;
       height: 190px;
-      background: radial-gradient(circle, rgba(240,125,47,0.34), transparent 70%);
+      background: radial-gradient(circle, rgba(249,115,22,0.24), transparent 70%);
       pointer-events: none;
     }
 
@@ -247,7 +246,7 @@
     .gallery-card {
       padding: 18px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(16,16,20,0.88);
       border: 1px solid rgba(255,255,255,0.08);
     }
 
@@ -324,8 +323,8 @@
       border-radius: 18px;
       display: grid;
       place-items: center;
-      background: rgba(240,125,47,0.16);
-      border: 1px solid rgba(240,125,47,0.28);
+      background: rgba(249,115,22,0.12);
+      border: 1px solid rgba(249,115,22,0.20);
       font-size: 1.35rem;
       margin-bottom: 16px;
     }
@@ -373,7 +372,7 @@
       padding: 22px;
       border-radius: 22px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.035);
+      background: rgba(16,16,20,0.82);
       position: relative;
     }
 
@@ -383,7 +382,7 @@
       display: grid;
       place-items: center;
       border-radius: 999px;
-      background: linear-gradient(135deg, #f07d2f, #ff9b47);
+      background: linear-gradient(135deg, #f97316, #fb923c);
       color: #160e08;
       font-weight: 900;
       margin-bottom: 14px;
@@ -409,7 +408,7 @@
     .contact-item {
       padding: 14px 16px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.03);
+      background: rgba(16,16,20,0.76);
       border: 1px solid rgba(255,255,255,0.07);
     }
 
@@ -435,7 +434,7 @@
       align-items: center;
       gap: 20px;
       padding: 28px;
-      background: linear-gradient(135deg, rgba(240,125,47,0.22), rgba(255,255,255,0.04));
+      background: linear-gradient(135deg, rgba(249,115,22,0.16), rgba(255,255,255,0.04));
     }
 
     .floating-wa {
