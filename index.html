@@ -3,16 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Controles Concepción | Copia de Controles y Llaves</title>
+
+<title>Controles Concepción | Copia de Controles</title>
 
 <style>
+
 :root{
---primary:#ff7a00;
---primary-dark:#e56700;
---bg:#0f1115;
---card:#151922;
+--primary:#ff6a00;
+--primary-light:#ff8c2a;
+--dark:#0c0c0c;
+--card:#141414;
 --text:#ffffff;
---muted:#9ca3af;
+--muted:#b3b3b3;
 }
 
 *{
@@ -23,7 +25,7 @@ font-family:system-ui,-apple-system,Segoe UI,Roboto;
 }
 
 body{
-background:var(--bg);
+background:var(--dark);
 color:var(--text);
 }
 
@@ -34,8 +36,8 @@ padding:20px;
 }
 
 header{
-background:#0b0d12;
-border-bottom:1px solid rgba(255,255,255,.05);
+background:black;
+border-bottom:2px solid var(--primary);
 }
 
 .nav{
@@ -44,23 +46,38 @@ align-items:center;
 justify-content:space-between;
 }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:700;
-font-size:20px;
-color:var(--primary);
+.logo img{
+height:60px;
+}
+
+.btn{
+background:var(--primary);
+color:white;
+padding:12px 22px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+}
+
+.btn:hover{
+background:var(--primary-light);
 }
 
 .hero{
-padding:60px 20px;
+padding:70px 20px;
 text-align:center;
+background:linear-gradient(180deg,#000000,#0c0c0c);
+}
+
+.hero img{
+height:90px;
+margin-bottom:20px;
 }
 
 .hero h1{
-font-size:38px;
-margin-bottom:15px;
+font-size:36px;
+margin-bottom:10px;
 }
 
 .hero p{
@@ -68,27 +85,13 @@ color:var(--muted);
 margin-bottom:25px;
 }
 
-.btn{
-background:var(--primary);
-color:white;
-padding:14px 24px;
-border-radius:12px;
-text-decoration:none;
-display:inline-block;
-font-weight:600;
-}
-
-.btn:hover{
-background:var(--primary-dark);
-}
-
 .section{
-padding:50px 0;
+padding:60px 0;
 }
 
 .section-header{
 text-align:center;
-margin-bottom:30px;
+margin-bottom:40px;
 }
 
 .section-header h2{
@@ -100,10 +103,22 @@ margin-bottom:10px;
 color:var(--muted);
 }
 
-.gallery-grid{
+.grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
+}
+
+.card{
+background:var(--card);
+padding:25px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.card h3{
+margin-bottom:10px;
+color:var(--primary);
 }
 
 .gallery-card{
@@ -116,12 +131,8 @@ border-radius:18px;
 width:100%;
 height:180px;
 object-fit:cover;
-border-radius:16px;
+border-radius:12px;
 margin-bottom:12px;
-}
-
-.gallery-card h3{
-margin-bottom:8px;
 }
 
 footer{
@@ -130,73 +141,114 @@ text-align:center;
 padding:30px;
 color:var(--muted);
 }
-</style>
 
+</style>
 </head>
+
 <body>
 
 <header>
 <div class="container nav">
+
 <div class="logo">
-Controles Concepción
+<img src="logo.png">
 </div>
 
 <a class="btn" href="https://wa.me/56977956214" target="_blank">
 WhatsApp
 </a>
+
 </div>
 </header>
 
 <section class="hero">
 <div class="container">
-<h1>Copia y programación de controles</h1>
-<p>Controles para autos, portones y duplicado de mandos automotrices</p>
+
+<img src="img/logo.png">
+
+<h1>Duplicado y programación de controles</h1>
+
+<p>Controles para autos, portones eléctricos y mandos automotrices</p>
 
 <a class="btn" href="https://wa.me/56977956214" target="_blank">
 Solicitar cotización
 </a>
+
 </div>
 </section>
 
 <section class="section">
 <div class="container">
+
 <div class="section-header">
-<h2>Trabajos reales realizados</h2>
-<p>Ejemplos reales de duplicados y programación</p>
+<h2>Servicios</h2>
+<p>Soluciones rápidas y profesionales</p>
 </div>
 
-<div class="gallery-grid">
+<div class="grid">
 
-<article class="gallery-card">
+<div class="card">
+<h3>Controles Automotrices</h3>
+<p>Duplicado y programación de controles para vehículos.</p>
+</div>
+
+<div class="card">
+<h3>Controles de Portón</h3>
+<p>Copia y configuración de controles para portones eléctricos.</p>
+</div>
+
+<div class="card">
+<h3>Programación</h3>
+<p>Sincronización y prueba completa de funcionamiento.</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+
+<div class="section-header">
+<h2>Trabajos reales</h2>
+<p>Ejemplos de servicios realizados</p>
+</div>
+
+<div class="grid">
+
+<div class="gallery-card">
 <img src="duplicado-hyundai-tucson-2010.jpg">
-<h3>Duplicado Hyundai Tucson 2010</h3>
-<p>Copia de mando original con programación y prueba de funcionamiento realizada.</p>
-</article>
+<h3>Hyundai Tucson 2010</h3>
+<p>Duplicado de control con programación y prueba.</p>
+</div>
 
-<article class="gallery-card">
+<div class="gallery-card">
+<h3>Controles portón</h3>
+<p>Duplicado y configuración para portones residenciales.</p>
+</div>
+
+<div class="gallery-card">
 <h3>Programación automotriz</h3>
-<p>Programación de controles con sincronización y prueba completa.</p>
-</article>
-
-<article class="gallery-card">
-<h3>Controles para portón</h3>
-<p>Duplicado y configuración de controles para portones eléctricos.</p>
-</article>
+<p>Programación de mandos con prueba de señal.</p>
+</div>
 
 </div>
+
 </div>
 </section>
 
 <section class="section">
 <div class="container">
+
 <div class="section-header">
-<h2>Contacto</h2>
+<h2>Ubicación</h2>
 <p>Tucapel 866, Concepción</p>
 </div>
 
-<div style="text-align:center;">
-<a class="btn" href="https://wa.me/56977956214" target="_blank">
-Escribir por WhatsApp
+<div style="text-align:center">
+<a class="btn" href="https://wa.me/56977956214">
+Contactar por WhatsApp
 </a>
 </div>
 
