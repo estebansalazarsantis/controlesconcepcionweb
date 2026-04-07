@@ -49,6 +49,10 @@ top:0;
 z-index:100;
 }
 
+header .container{
+padding:8px 20px;
+}
+
 .nav{
 display:flex;
 align-items:center;
@@ -56,7 +60,7 @@ justify-content:space-between;
 }
 
 .logo img{
-height:120px;
+height:70px;
 }
 
 .menu{
@@ -78,7 +82,7 @@ color:var(--primary);
 /* HERO */
 
 .hero{
-padding:60px 20px;
+padding:50px 20px;
 text-align:center;
 background:linear-gradient(180deg,#000,#0c0c0c);
 animation:fadeIn 1s ease;
@@ -87,7 +91,7 @@ animation:fadeIn 1s ease;
 .banner{
 background:var(--primary);
 color:white;
-padding:10px;
+padding:10px 16px;
 border-radius:8px;
 display:inline-block;
 margin-bottom:20px;
@@ -95,7 +99,7 @@ font-weight:600;
 }
 
 .hero h1{
-font-size:38px;
+font-size:36px;
 margin-bottom:10px;
 }
 
@@ -107,7 +111,7 @@ margin-bottom:25px;
 .btn{
 background:var(--primary);
 color:white;
-padding:14px 24px;
+padding:12px 22px;
 border-radius:10px;
 text-decoration:none;
 font-weight:600;
@@ -171,35 +175,13 @@ border-radius:12px;
 margin-bottom:12px;
 }
 
-/* MAPA */
-
 .map{
 border-radius:18px;
 overflow:hidden;
 margin-top:20px;
 }
 
-/* WHATSAPP FLOAT */
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:28px;
-text-decoration:none;
-box-shadow:0 5px 20px rgba(0,0,0,.3);
-z-index:999;
-}
-
-/* ANIMATIONS */
+/* ANIMACIONES */
 
 @keyframes fadeIn{
 from{opacity:0}
@@ -240,6 +222,7 @@ color:var(--muted);
 <a href="#inicio">Inicio</a>
 <a href="#servicios">Servicios</a>
 <a href="#trabajos">Trabajos</a>
+<a href="#testimonios">Opiniones</a>
 <a href="#contacto">Ubicación</a>
 <a class="btn" href="https://wa.me/56977956214">WhatsApp</a>
 </nav>
@@ -256,7 +239,7 @@ Duplicado de controles desde $15.000
 
 <h1>Duplicado y programación de controles</h1>
 
-<p>Automotriz • Portones eléctricos • Mandos remotos</p>
+<p>Automotriz • Portones eléctricos • Atención a domicilio</p>
 
 <a class="btn" href="https://wa.me/56977956214">
 Solicitar cotización
@@ -288,6 +271,11 @@ Solicitar cotización
 <div class="card">
 <h3>Programación</h3>
 <p>Sincronización y prueba completa de funcionamiento.</p>
+</div>
+
+<div class="card">
+<h3>Atención a domicilio</h3>
+<p>Servicio en terreno para vehículos y domicilios en Concepción.</p>
 </div>
 
 </div>
@@ -325,6 +313,46 @@ Solicitar cotización
 </div>
 </section>
 
+<section class="section" id="testimonios">
+<div class="container">
+
+<div class="section-header">
+<h2>Opiniones de clientes</h2>
+<p>Comentarios reales de clientes</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+★★★★★
+<p>Muy buena atención, rápido y funcionando perfecto. Totalmente recomendado.</p>
+<strong>Cliente Google</strong>
+</div>
+
+<div class="card">
+★★★★★
+<p>Me duplicaron el control del auto en minutos. Excelente servicio.</p>
+<strong>Cliente Google</strong>
+</div>
+
+<div class="card">
+★★★★★
+<p>Buen precio y atención. Además fue rápido.</p>
+<strong>Cliente Google</strong>
+</div>
+
+</div>
+
+<div style="text-align:center;margin-top:25px">
+<a class="btn" target="_blank"
+href="https://share.google/9liqz3YpbaAVVMrvb">
+Ver más opiniones en Google
+</a>
+</div>
+
+</div>
+</section>
+
 <section class="section" id="contacto">
 <div class="container">
 
@@ -355,12 +383,6 @@ style="border:0;">
 <footer>
 Controles Concepción © 2026
 </footer>
-
-<a class="whatsapp"
-href="https://wa.me/56977956214"
-target="_blank">
-💬
-</a>
 
 </body>
 </html>
