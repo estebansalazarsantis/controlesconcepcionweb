@@ -1,1750 +1,211 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Controles Concepción | Copia y programación de controles</title>
-  <meta name="description" content="Copia y programación de controles para portones eléctricos, vehículos y cierres centralizados en Concepción. Atención presencial y coordinación en terreno según disponibilidad." />
-  <style>
-    :root {
-      --bg: #08070d;
-      --bg-soft: #101014;
-      --surface: rgba(16,16,20,0.92);
-      --surface-2: rgba(255,255,255,0.035);
-      --line: rgba(255,255,255,0.08);
-      --line-strong: rgba(249,115,22,0.22);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --accent: #f97316;
-      --accent-2: #fb923c;
-      --accent-deep: #c2410c;
-      --success: #25d366;
-      --shadow: 0 22px 60px rgba(0,0,0,0.34);
-      --radius: 24px;
-      --radius-lg: 32px;
-      --max: 1180px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controles Concepción | Copia de Controles y Llaves</title>
+
+<style>
+:root{
+--primary:#ff7a00;
+--primary-dark:#e56700;
+--bg:#0f1115;
+--card:#151922;
+--text:#ffffff;
+--muted:#9ca3af;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui,-apple-system,Segoe UI,Roboto;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+header{
+background:#0b0d12;
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.nav{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:700;
+font-size:20px;
+color:var(--primary);
+}
+
+.hero{
+padding:60px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.hero p{
+color:var(--muted);
+margin-bottom:25px;
+}
+
+.btn{
+background:var(--primary);
+color:white;
+padding:14px 24px;
+border-radius:12px;
+text-decoration:none;
+display:inline-block;
+font-weight:600;
+}
+
+.btn:hover{
+background:var(--primary-dark);
+}
+
+.section{
+padding:50px 0;
+}
+
+.section-header{
+text-align:center;
+margin-bottom:30px;
+}
+
+.section-header h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.section-header p{
+color:var(--muted);
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery-card{
+background:var(--card);
+padding:20px;
+border-radius:18px;
+}
+
+.gallery-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:16px;
+margin-bottom:12px;
+}
+
+.gallery-card h3{
+margin-bottom:8px;
+}
+
+footer{
+border-top:1px solid rgba(255,255,255,.05);
+text-align:center;
+padding:30px;
+color:var(--muted);
+}
+</style>
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top right, rgba(249,115,22,0.18), transparent 24%),
-        radial-gradient(circle at 8% 12%, rgba(249,115,22,0.09), transparent 18%),
-        linear-gradient(180deg, #08070d 0%, #0b0a10 46%, #101014 100%);
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      width: min(100% - 32px, var(--max));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-      background: rgba(8,7,13,0.88);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      min-width: 0;
-    }
-
-    .brand-logo {
-      width: 78px;
-      height: 78px;
-      border-radius: 22px;
-      object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: var(--shadow);
-      background: #111;
-      flex-shrink: 0;
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 1.14rem;
-      letter-spacing: 0.2px;
-    }
-
-    .brand-text span {
-      display: block;
-      font-size: 0.96rem;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.95rem;
-      transition: color 0.18s ease;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .btn,
-    .btn-secondary,
-    .btn-whatsapp,
-    .service-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 18px;
-      font-weight: 700;
-      transition: transform 0.18s ease, opacity 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .btn:hover,
-    .btn-secondary:hover,
-    .btn-whatsapp:hover,
-    .service-link:hover,
-    .card:hover,
-    .gallery-card:hover,
-    .process-step:hover,
-    .faq:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #1d1208;
-      box-shadow: var(--shadow);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .btn-whatsapp {
-      background: linear-gradient(135deg, #22c55e, var(--success));
-      color: #08230f;
-      box-shadow: var(--shadow);
-    }
-
-    .service-link {
-      padding: 12px 16px;
-      border: 1px solid rgba(249,115,22,0.2);
-      background: rgba(249,115,22,0.08);
-      color: #ffd9bf;
-      width: fit-content;
-      font-size: 0.94rem;
-    }
-
-    .hero {
-      padding: 76px 0 34px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 30px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid rgba(249,115,22,0.24);
-      border-radius: 999px;
-      background: rgba(249,115,22,0.10);
-      color: #ffd7bf;
-      font-size: 0.92rem;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.4rem, 5vw, 4.8rem);
-      line-height: 0.96;
-      letter-spacing: -0.05em;
-      max-width: 12ch;
-    }
-
-    .hero p {
-      margin: 0;
-      font-size: 1.06rem;
-      line-height: 1.8;
-      color: var(--muted);
-      max-width: 60ch;
-    }
-
-    .hero-actions,
-    .chips,
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .hero-actions { margin-top: 26px; }
-    .chips { margin-top: 24px; }
-    .tag-row { margin-top: 18px; }
-
-    .chip,
-    .tag {
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      background: rgba(255,255,255,0.025);
-      font-size: 0.92rem;
-    }
-
-    .hero-card,
-    .cta-box,
-    .highlight-box {
-      position: relative;
-      overflow: hidden;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card::before,
-    .cta-box::before,
-    .highlight-box::before {
-      content: "";
-      position: absolute;
-      inset: auto -40px -50px auto;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(249,115,22,0.22), transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-card { padding: 28px; }
-    .highlight-box,
-    .cta-box { padding: 26px; }
-
-    .hero-card h3,
-    .highlight-box h3,
-    .cta-box h3,
-    .section-title,
-    .card h3,
-    .gallery-card h3,
-    .faq h3,
-    .process-step h3 {
-      margin: 0 0 10px;
-    }
-
-    .hero-card p,
-    .highlight-box p,
-    .cta-box p,
-    .section-copy,
-    .card p,
-    .gallery-card p,
-    .faq p,
-    .process-step p,
-    .contact-item span,
-    .contact-item a,
-    .list li {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .icon {
-      width: 54px;
-      height: 54px;
-      display: grid;
-      place-items: center;
-      border-radius: 18px;
-      background: rgba(249,115,22,0.12);
-      border: 1px solid rgba(249,115,22,0.2);
-      margin-bottom: 16px;
-      font-size: 1.3rem;
-    }
-
-    .stat-grid,
-    .services,
-    .features,
-    .gallery-grid,
-    .faq-grid,
-    .contact-grid,
-    .process-grid,
-    .audience-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .stat-grid { grid-template-columns: repeat(2, 1fr); margin-top: 22px; }
-    .services { grid-template-columns: repeat(3, 1fr); }
-    .features { grid-template-columns: repeat(4, 1fr); }
-    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-    .faq-grid { grid-template-columns: repeat(2, 1fr); }
-    .contact-grid { grid-template-columns: 1.1fr 0.9fr; }
-    .process-grid { grid-template-columns: repeat(3, 1fr); }
-    .audience-grid { grid-template-columns: repeat(3, 1fr); }
-
-    .stat,
-    .card,
-    .gallery-card,
-    .faq,
-    .process-step {
-      background: var(--surface-2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-      transition: transform 0.18s ease;
-    }
-
-    .stat {
-      background: rgba(16,16,20,0.88);
-      padding: 18px;
-      border-radius: 20px;
-    }
-
-    .stat strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-    }
-
-    .stat span { color: var(--muted); line-height: 1.6; font-size: 0.92rem; }
-
-    section {
-      scroll-margin-top: 98px;
-    }
-
-    .section {
-      padding: 30px 0 22px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .section-header h2 {
-      margin: 0;
-      font-size: clamp(1.75rem, 2vw, 2.65rem);
-      letter-spacing: -0.03em;
-    }
-
-    .section-header p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 66ch;
-      line-height: 1.75;
-    }
-
-    .process-step {
-      position: relative;
-      padding-top: 26px;
-    }
-
-    .step-number {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #1d1208;
-      font-weight: 900;
-      margin-bottom: 14px;
-      box-shadow: var(--shadow);
-    }
-
-    .gallery-card {
-      min-height: 190px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      background:
-        linear-gradient(180deg, rgba(249,115,22,0.02), rgba(255,255,255,0.03)),
-        rgba(16,16,20,0.86);
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 14px;
-    }
-
-    .contact-item {
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: rgba(16,16,20,0.78);
-      border: 1px solid var(--line);
-    }
-
-    .contact-item strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.96rem;
-    }
-
-    .list {
-      margin: 12px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .list li + li { margin-top: 8px; }
-
-    .cta {
-      padding: 34px 0 76px;
-    }
-
-    .cta-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 22px;
-      background: linear-gradient(135deg, rgba(249,115,22,0.16), rgba(255,255,255,0.04));
-    }
-
-    .floating-wa {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 120;
-      width: 60px;
-      height: 60px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #22c55e, var(--success));
-      color: #08230f;
-      font-size: 1.45rem;
-      font-weight: 900;
-      box-shadow: 0 16px 35px rgba(0,0,0,0.35);
-    }
-
-    footer {
-      padding: 0 0 34px;
-      color: #aeb8c8;
-      font-size: 0.95rem;
-    }
-
-    .footer-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    @media (max-width: 1080px) {
-      .hero-grid,
-      .contact-grid,
-      .services,
-      .features,
-      .gallery-grid,
-      .faq-grid,
-      .process-grid,
-      .audience-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .nav {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav-links {
-        justify-content: space-between;
-      }
-
-      .services,
-      .features,
-      .gallery-grid,
-      .faq-grid,
-      .process-grid,
-      .audience-grid,
-      .stat-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-header,
-      .cta-box,
-      .footer-line {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .brand-logo {
-        width: 68px;
-        height: 68px;
-      }
-
-      h1 { font-size: 2.55rem; max-width: 100%; }
-      .hero { padding-top: 44px; }
-      .floating-wa { width: 56px; height: 56px; }
-    }
-  </style>
 </head>
 <body>
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <img class="brand-logo" src="logo.png" alt="Logo Controles Concepción" />
-        <div class="brand-text">
-          <strong>Controles Concepción</strong>
-          <span>Copia y programación de controles</span>
-        </div>
-      </a>
 
-      <nav class="nav-links">
-        <a href="#servicios">Servicios</a>
-        <a href="#ventajas">Ventajas</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#trabajos">Trabajos</a>
-        <a href="#contacto">Contacto</a>
-        <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      </nav>
-    </div>
-  </header>
+<header>
+<div class="container nav">
+<div class="logo">
+Controles Concepción
+</div>
+
+<a class="btn" href="https://wa.me/56977956214" target="_blank">
+WhatsApp
+</a>
+</div>
+</header>
+
+<section class="hero">
+<div class="container">
+<h1>Copia y programación de controles</h1>
+<p>Controles para autos, portones y duplicado de mandos automotrices</p>
+
+<a class="btn" href="https://wa.me/56977956214" target="_blank">
+Solicitar cotización
+</a>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="section-header">
+<h2>Trabajos reales realizados</h2>
+<p>Ejemplos reales de duplicados y programación</p>
+</div>
+
+<div class="gallery-grid">
+
+<article class="gallery-card">
+<img src="img/duplicado-hyundai-tucson-2010.jpg">
+<h3>Duplicado Hyundai Tucson 2010</h3>
+<p>Copia de mando original con programación y prueba de funcionamiento realizada.</p>
+</article>
+
+<article class="gallery-card">
+<h3>Programación automotriz</h3>
+<p>Programación de controles con sincronización y prueba completa.</p>
+</article>
+
+<article class="gallery-card">
+<h3>Controles para portón</h3>
+<p>Duplicado y configuración de controles para portones eléctricos.</p>
+</article>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="section-header">
+<h2>Contacto</h2>
+<p>Tucapel 866, Concepción</p>
+</div>
+
+<div style="text-align:center;">
+<a class="btn" href="https://wa.me/56977956214" target="_blank">
+Escribir por WhatsApp
+</a>
+</div>
+
+</div>
+</section>
+
+<footer>
+Controles Concepción © 2026
+</footer>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">🟧 Servicio técnico y soluciones rápidas en Concepción</div>
-          <h1>Controles, venta, duplicados y programación.</h1>
-          <p>
-            En Controles Concepción resolvemos necesidades relacionadas con controles remotos,
-            portones eléctricos, mandos automotrices y cierre centralizado. 
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
-            <a class="btn-secondary" href="#servicios">Ver servicios</a>
-          </div>
-
-          <div class="chips">
-            <div class="chip">📍 Tucapel 866, Concepción</div>
-            <div class="chip">🚗 Atención presencial y en terreno</div>
-            <div class="chip">📡 Compatibilidad según modelo</div>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <div class="icon">📲</div>
-          <h3>¿Tu control dejó de funcionar o necesitas una copia?</h3>
-          <p>
-            Envíanos una foto del mando y te orientamos con la alternativa más conveniente:
-            duplicado, programación, revisión, cambio o solución compatible.
-          </p>
-
-          <div class="stat-grid">
-            <div class="stat">
-              <strong>Portones eléctricos</strong>
-              <span>Venta, duplicados, renovación y soluciones según tipo de frecuencia y sistema.</span>
-            </div>
-            <div class="stat">
-              <strong>Mandos automotrices</strong>
-              <span>Apoyo en controles, cierre centralizado y revisión de compatibilidad.</span>
-            </div>
-            <div class="stat">
-              <strong>Diagnóstico inicial</strong>
-              <span>Revisión básica para identificar falla, señal, batería o programación.</span>
-            </div>
-            <div class="stat">
-              <strong>Atención cercana</strong>
-              <span>Respuesta clara y rápida para orientar al cliente sin enredos técnicos.</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="highlight-box">
-          <h3>Mejoras aplicadas para que la web se vea más profesional</h3>
-          <p>
-            Le di una estructura más limpia, mejor jerarquía visual, más aire entre secciones,
-            mejor contraste y una propuesta más comercial. La idea ahora es reforzar confianza,
-            mostrar trabajos reales y hacer que la marca se vea más sólida.
-          </p>
-          <div class="tag-row">
-            <div class="tag">Diseño más limpio</div>
-            <div class="tag">Paleta tipo app</div>
-            <div class="tag">Mejor foco comercial</div>
-            <div class="tag">Lista para crecer</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="servicios">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Servicios principales</h2>
-          </div>
-          <p>
-            Redactados de forma más clara y comercial, para que el cliente entienda rápido qué haces y te escriba de inmediato.
-          </p>
-        </div>
-
-        <div class="services">
-          <article class="card">
-            <div class="icon">🛠️</div>
-            <h3>Copia de controles remotos</h3>
-            <p>Duplicado de controles para portones y mandos compatibles, con revisión del tipo de señal y funcionamiento.</p>
-            <div class="tag-row"><a class="service-link" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Consultar este servicio</a></div>
-          </article>
-
-          <article class="card">
-            <div class="icon">🚘</div>
-            <h3>Programación automotriz</h3>
-            <p>Apoyo en mandos automotrices y soluciones vinculadas a cierre centralizado, según evaluación del caso.</p>
-            <div class="tag-row"><a class="service-link" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Consultar este servicio</a></div>
-          </article>
-
-          <article class="card">
-            <div class="icon">📡</div>
-            <h3>Controles para portón</h3>
-            <p>Venta, renovación y alternativas compatibles para distintos tipos de portones automáticos y accesos.</p>
-            <div class="tag-row"><a class="service-link" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Consultar este servicio</a></div>
-          </article>
-
-          <article class="card">
-            <div class="icon">🔍</div>
-            <h3>Diagnóstico y revisión</h3>
-            <p>Evaluación inicial para identificar si la falla está en el control, la batería, la transmisión o la programación.</p>
-            <div class="tag-row"><a class="service-link" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Consultar este servicio</a></div>
-          </article>
-
-          <article class="card">
-            <div class="icon">🏠</div>
-            <h3>Atención en terreno</h3>
-            <p>Coordinación de visitas para ciertos casos en Concepción y alrededores, según disponibilidad y tipo de servicio.</p>
-            <div class="tag-row"><a class="service-link" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Consultar este servicio</a></div>
-          </article>
-
-          <article class="card">
-            <div class="icon">💬</div>
-            <h3>Asesoría por WhatsApp</h3>
-            <p>Ideal para que el cliente envíe una foto del mando y reciba orientación rápida antes de ir al local.</p>
-            <div class="tag-row"><a class="service-link" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Consultar este servicio</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="ventajas">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Por qué esta versión se ve más seria</h2>
-          </div>
-          <p>
-            En vez de recargar la página, la estructura ahora refuerza imagen de marca, claridad de servicio y facilidad de contacto.
-          </p>
-        </div>
-
-        <div class="features">
-          <article class="card">
-            <div class="icon">🎯</div>
-            <h3>Mensaje claro</h3>
-            <p>La portada explica rápido qué haces, dónde estás y cómo debe contactarte el cliente.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🧩</div>
-            <h3>Jerarquía visual</h3>
-            <p>Títulos más limpios, espacios mejor distribuidos y tarjetas más coherentes con la identidad del negocio.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">📱</div>
-            <h3>Enfoque móvil</h3>
-            <p>La mayoría de tus clientes llegará desde el celular, así que el diseño prioriza lectura rápida y botón de WhatsApp visible.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🟧</div>
-            <h3>Marca más consistente</h3>
-            <p>Se mantiene la línea negro + naranja de la app y del logo para que todo se sienta parte de la misma marca.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Clientes a los que puedes apuntar</h2>
-          </div>
-          <p>
-            Esta sección ayuda a que el visitante se identifique más rápido con el servicio que necesita.
-          </p>
-        </div>
-
-        <div class="audience-grid">
-          <article class="card">
-            <div class="icon">🏢</div>
-            <h3>Condominios y edificios</h3>
-            <p>Apoyo en copias de mandos, renovación y coordinación para necesidades comunes de acceso.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🚗</div>
-            <h3>Particulares</h3>
-            <p>Personas que perdieron un control, necesitan duplicarlo o tienen problemas con su mando.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🏪</div>
-            <h3>Empresas y locales</h3>
-            <p>Negocios que requieren mantener operativos sus accesos o coordinar soluciones rápidas.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="como-funciona">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Cómo funciona</h2>
-          </div>
-          <p>Una explicación simple del proceso, pensada para reducir dudas y aumentar conversiones por WhatsApp.</p>
-        </div>
-
-        <div class="process-grid">
-          <article class="process-step">
-            <div class="step-number">1</div>
-            <h3>Envía una foto o descripción</h3>
-            <p>El cliente manda una imagen del control, la marca o explica el problema por WhatsApp.</p>
-          </article>
-          <article class="process-step">
-            <div class="step-number">2</div>
-            <h3>Se revisa la compatibilidad</h3>
-            <p>Se evalúa si corresponde copia, programación, cambio de mando o revisión presencial.</p>
-          </article>
-          <article class="process-step">
-            <div class="step-number">3</div>
-            <h3>Se coordina la atención</h3>
-            <p>La atención se realiza en local o en terreno, según el caso y disponibilidad.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="trabajos">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Trabajos y resultados</h2>
-          </div>
-          <p>
-            Esta es la parte que más puede elevar la confianza. Aquí conviene poner fotos reales, videos cortos o antes y después.
-          </p>
-        </div>
-
-        <div class="gallery-grid">
-          <article class="gallery-card">
-            <h3>Duplicados realizados</h3>
-            <p>Aquí podemos poner una foto real de controles copiados o mandos nuevos listos para entregar.</p>
-          </article>
-          <article class="gallery-card">
-            <h3>Programación automotriz</h3>
-            <p>Ideal para mostrar trabajos en vehículos, cierre centralizado o mandos específicos.</p>
-          </article>
-          <article class="gallery-card">
-            <h3>Atención en terreno</h3>
-            <p>También sirve para mostrar visitas, soluciones en portones o servicios realizados fuera del local.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Preguntas frecuentes</h2>
-          </div>
-          <p>Ayudan a filtrar dudas comunes y dejan más preparada la conversación comercial.</p>
-        </div>
-
-        <div class="faq-grid">
-          <article class="faq">
-            <h3>¿Cómo sé si mi control tiene solución?</h3>
-            <p>Lo ideal es enviar una foto del mando y, si es posible, indicar la marca o modelo. Así se revisa compatibilidad antes de coordinar.</p>
-          </article>
-          <article class="faq">
-            <h3>¿Atienden a domicilio?</h3>
-            <p>Sí, ciertos trabajos se pueden coordinar en terreno según el tipo de servicio, ubicación y disponibilidad.</p>
-          </article>
-          <article class="faq">
-            <h3>¿Trabajan con distintas marcas?</h3>
-            <p>Sí, se revisan distintos tipos de mandos y soluciones compatibles. Cada caso se confirma antes de agendar.</p>
-          </article>
-          <article class="faq">
-            <h3>¿Dónde están ubicados?</h3>
-            <p>La atención base se informa en Tucapel 866, Concepción. También se puede coordinar atención según necesidad.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contacto">
-      <div class="container contact-grid">
-        <article class="card">
-          <div class="section-header" style="margin-bottom: 8px;">
-            <div>
-              <h2>Contacto</h2>
-            </div>
-          </div>
-          <p class="section-copy">Quedó estructurado para que te contacten rápido desde celular o computador.</p>
-
-          <div class="contact-list">
-            <div class="contact-item">
-              <strong>WhatsApp</strong>
-              <a href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">+56 9 7795 6214</a>
-            </div>
-            <div class="contact-item">
-              <strong>Instagram</strong>
-              <a href="https://www.instagram.com/controlesconcepcion/" target="_blank" rel="noopener noreferrer">@controlesconcepcion</a>
-            </div>
-            <div class="contact-item">
-              <strong>Dirección</strong>
-              <a href="https://maps.google.com/?q=Tucapel+866,+Concepción,+Chile" target="_blank" rel="noopener noreferrer">Tucapel 866, Concepción, Chile</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="card">
-          <h3>Lo que más mejorará la página ahora</h3>
-          <ul class="list">
-            <li>Fotos reales de trabajos terminados.</li>
-            <li>Videos cortos mostrando programación o prueba de mandos.</li>
-            <li>Capturas de WhatsApp o reseñas de clientes.</li>
-            <li>Imágenes de controles y modelos frecuentes.</li>
-            <li>Una sección de marcas o compatibilidades reales.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <div class="cta-box">
-          <div>
-            <h3>La siguiente mejora importante es usar material real</h3>
-            <p>
-              Si me adjuntas fotos de trabajos realizados, controles, llaves, vehículos o videos cortos,
-              te dejo esta web mucho más potente y convincente.
-            </p>
-          </div>
-          <a class="btn-whatsapp" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-line">
-      <span>© <span id="year"></span> Controles Concepción</span>
-      <span>Diseño orientado a informar, generar confianza y convertir visitas en consultas</span>
-    </div>
-  </footer>
-
-  <a class="floating-wa" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">✆</a>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Controles Concepción | Copia y programación de controles</title>
-  <meta name="description" content="Copia y programación de controles para portones eléctricos, vehículos y cierres centralizados en Concepción. Atención presencial y coordinación en terreno según disponibilidad." />
-  <style>
-    :root {
-      --bg: #08070d;
-      --bg-soft: #101014;
-      --card: rgba(255,255,255,0.035);
-      --line: rgba(255,255,255,0.08);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --accent: #f97316;
-      --accent-dark: #ea580c;
-      --accent-deep: #c2410c;
-      --accent-brown: #7c2d12;
-      --success: #25d366;
-      --shadow: 0 20px 60px rgba(0,0,0,0.35);
-      --radius: 24px;
-      --max: 1180px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(249,115,22,0.18), transparent 24%),
-        radial-gradient(circle at 12% 10%, rgba(249,115,22,0.10), transparent 18%),
-        linear-gradient(180deg, #08070d 0%, #0b0a10 46%, #101014 100%);
-      color: var(--text);
-    }
-
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-
-    .container {
-      width: min(100% - 32px, var(--max));
-      margin: 0 auto;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
-      background: rgba(8, 7, 13, 0.9);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-
-    .brand-logo {
-      width: 72px;
-      height: 72px;
-      border-radius: 20px;
-      object-fit: cover;
-      background: #111;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: var(--shadow);
-    }
-
-    .brand-text strong {
-      display: block;
-      font-size: 1.15rem;
-      letter-spacing: 0.2px;
-    }
-
-    .brand-text span {
-      display: block;
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .btn,
-    .btn-secondary,
-    .btn-whatsapp {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 20px;
-      border-radius: 18px;
-      font-weight: 700;
-      transition: transform 0.18s ease, opacity 0.18s ease, border-color 0.18s ease;
-    }
-
-    .btn:hover,
-    .btn-secondary:hover,
-    .btn-whatsapp:hover,
-    .service-card:hover,
-    .feature:hover,
-    .faq:hover,
-    .contact-card:hover,
-    .mini-card:hover,
-    .gallery-card:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn {
-      background: linear-gradient(135deg, #f97316, #fb923c);
-      color: #1c1009;
-      box-shadow: var(--shadow);
-    }
-
-    .btn-secondary {
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: rgba(255,255,255,0.02);
-    }
-
-    .btn-whatsapp {
-      background: linear-gradient(135deg, #22c55e, #25d366);
-      color: #08230f;
-      box-shadow: var(--shadow);
-    }
-
-    .hero {
-      padding: 72px 0 44px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border: 1px solid rgba(249,115,22,0.24);
-      border-radius: 999px;
-      background: rgba(249,115,22,0.12);
-      color: #ffd7bf;
-      font-size: 0.9rem;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0 0 18px;
-      font-size: clamp(2.2rem, 5vw, 4.6rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-    }
-
-    .hero p {
-      margin: 0;
-      font-size: 1.08rem;
-      line-height: 1.7;
-      color: var(--muted);
-      max-width: 60ch;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 28px;
-    }
-
-    .hero-notes,
-    .chip-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .tag,
-    .chip {
-      padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      background: rgba(16,16,20,0.76);
-      font-size: 0.92rem;
-    }
-
-    .hero-card,
-    .promo-box {
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-      border: 1px solid var(--line);
-      border-radius: 30px;
-      padding: 28px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before,
-    .promo-box::before {
-      content: "";
-      position: absolute;
-      inset: auto -50px -60px auto;
-      width: 190px;
-      height: 190px;
-      background: radial-gradient(circle, rgba(249,115,22,0.24), transparent 70%);
-      pointer-events: none;
-    }
-
-    .stat-grid,
-    .mini-grid,
-    .gallery-grid {
-      display: grid;
-      gap: 14px;
-    }
-
-    .stat-grid { grid-template-columns: repeat(2, 1fr); margin-top: 22px; }
-    .mini-grid { grid-template-columns: repeat(3, 1fr); }
-    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-
-    .stat,
-    .mini-card,
-    .gallery-card {
-      padding: 18px;
-      border-radius: 20px;
-      background: rgba(16,16,20,0.88);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .stat strong,
-    .mini-card strong {
-      display: block;
-      font-size: 1rem;
-      margin-bottom: 6px;
-    }
-
-    .stat span,
-    .mini-card span,
-    .gallery-card span {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
-
-    .section {
-      padding: 30px 0 20px;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .section-header h2 {
-      margin: 0;
-      font-size: clamp(1.7rem, 2vw, 2.6rem);
-      letter-spacing: -0.03em;
-    }
-
-    .section-header p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 65ch;
-      line-height: 1.7;
-    }
-
-    .services,
-    .features,
-    .faq-grid,
-    .contact-grid {
-      display: grid;
-      gap: 18px;
-    }
-
-    .services { grid-template-columns: repeat(3, 1fr); }
-    .features { grid-template-columns: repeat(4, 1fr); }
-    .faq-grid { grid-template-columns: repeat(2, 1fr); }
-    .contact-grid { grid-template-columns: 1.1fr 0.9fr; }
-
-    .service-card,
-    .feature,
-    .faq,
-    .contact-card,
-    .cta-box,
-    .promo-box {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 22px;
-      box-shadow: var(--shadow);
-      transition: transform 0.18s ease;
-    }
-
-    .icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: rgba(249,115,22,0.12);
-      border: 1px solid rgba(249,115,22,0.20);
-      font-size: 1.35rem;
-      margin-bottom: 16px;
-    }
-
-    .service-card h3,
-    .feature h3,
-    .faq h3,
-    .contact-card h3,
-    .cta-box h3,
-    .promo-box h3,
-    .gallery-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.15rem;
-    }
-
-    .service-card p,
-    .feature p,
-    .faq p,
-    .contact-card p,
-    .cta-box p,
-    .promo-box p,
-    .list li,
-    .gallery-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .list {
-      margin: 14px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-
-    .list li + li { margin-top: 8px; }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 10px;
-    }
-
-    .step {
-      padding: 22px;
-      border-radius: 22px;
-      border: 1px solid var(--line);
-      background: rgba(16,16,20,0.82);
-      position: relative;
-    }
-
-    .step-number {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #f97316, #fb923c);
-      color: #160e08;
-      font-weight: 900;
-      margin-bottom: 14px;
-    }
-
-    .step h3 {
-      margin: 0 0 8px;
-      font-size: 1.08rem;
-    }
-
-    .step p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .contact-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 12px;
-    }
-
-    .contact-item {
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(16,16,20,0.76);
-      border: 1px solid rgba(255,255,255,0.07);
-    }
-
-    .contact-item strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.96rem;
-    }
-
-    .contact-item span,
-    .contact-item a {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .cta {
-      padding: 34px 0 72px;
-    }
-
-    .cta-box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 28px;
-      background: linear-gradient(135deg, rgba(249,115,22,0.16), rgba(255,255,255,0.04));
-    }
-
-    .floating-wa {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 120;
-      width: 60px;
-      height: 60px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: var(--success);
-      color: #08230f;
-      font-size: 1.5rem;
-      font-weight: 900;
-      box-shadow: 0 16px 35px rgba(0,0,0,0.35);
-    }
-
-    footer {
-      padding: 0 0 34px;
-      color: #a99e94;
-      font-size: 0.95rem;
-    }
-
-    .footer-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding-top: 18px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    @media (max-width: 1050px) {
-      .hero-grid,
-      .contact-grid,
-      .services,
-      .features,
-      .faq-grid,
-      .steps,
-      .gallery-grid,
-      .mini-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .nav {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .nav-links {
-        justify-content: space-between;
-      }
-
-      .services,
-      .features,
-      .faq-grid,
-      .steps,
-      .stat-grid,
-      .mini-grid,
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-header,
-      .cta-box,
-      .footer-line {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      h1 { font-size: 2.4rem; }
-      .hero { padding-top: 44px; }
-      .floating-wa { width: 56px; height: 56px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="#inicio" aria-label="Ir al inicio">
-        <img class="brand-logo" src="logo.png" alt="Logo Controles Concepción" />
-        <div class="brand-text">
-          <strong>Controles Concepción</strong>
-          <span>Copia y programación de controles</span>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="#servicios">Servicios</a>
-        <a href="#marcas">Soluciones</a>
-        <a href="#como-funciona">Cómo funciona</a>
-        <a href="#contacto">Contacto</a>
-        <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" id="inicio">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow">🟧 Servicio técnico y soluciones rápidas en Concepción</div>
-          <h1>Controles, duplicados y programación para portones y vehículos.</h1>
-          <p>
-            En Controles Concepción ofrecemos soluciones para copia y programación de controles remotos,
-            mandos para portones eléctricos, cierre centralizado y servicios relacionados. Atendemos de forma
-            cercana, clara y rápida, tanto en local como con coordinación en terreno según disponibilidad.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Cotizar por WhatsApp</a>
-            <a class="btn-secondary" href="#servicios">Ver servicios</a>
-          </div>
-
-          <div class="hero-notes">
-            <div class="tag">📍 Tucapel 866, Concepción</div>
-            <div class="tag">🚗 Atención presencial y en terreno</div>
-            <div class="tag">📡 Compatibilidad según modelo</div>
-          </div>
-        </div>
-
-        <aside class="hero-card">
-          <div class="icon">📲</div>
-          <h3>¿Tu control dejó de funcionar o necesitas una copia?</h3>
-          <p>
-            Envíanos una foto del mando por WhatsApp y te orientamos con la alternativa más conveniente:
-            duplicado, programación, renovación o revisión del equipo.
-          </p>
-
-          <div class="stat-grid">
-            <div class="stat">
-              <strong>Portones eléctricos</strong>
-              <span>Copias, renovación y soluciones según tipo de frecuencia y sistema.</span>
-            </div>
-            <div class="stat">
-              <strong>Mandos automotrices</strong>
-              <span>Apoyo en controles, cierre centralizado y revisión de compatibilidad.</span>
-            </div>
-            <div class="stat">
-              <strong>Diagnóstico inicial</strong>
-              <span>Revisión para distinguir si la falla está en batería, señal o programación.</span>
-            </div>
-            <div class="stat">
-              <strong>Atención cercana</strong>
-              <span>Respuesta simple y directa para que el cliente sepa qué necesita.</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="marcas">
-      <div class="container">
-        <div class="promo-box">
-          <h3>Soluciones para distintos tipos de mandos y sistemas</h3>
-          <p>
-            Podemos mostrar desde ya las líneas de servicio que más te conviene destacar: controles para portón,
-            duplicados, programación automotriz, diagnóstico y atención en terreno. Más adelante también podemos
-            agregar marcas específicas, equipos compatibles o productos destacados.
-          </p>
-          <div class="chip-row">
-            <div class="chip">Controles para portón</div>
-            <div class="chip">Duplicados</div>
-            <div class="chip">Mandos automotrices</div>
-            <div class="chip">Cierre centralizado</div>
-            <div class="chip">Diagnóstico</div>
-            <div class="chip">Atención en terreno</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="servicios">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Servicios principales</h2>
-          </div>
-          <p>
-            La idea es que el cliente entienda rápido lo que haces y llegue directo al botón de WhatsApp para consultar.
-          </p>
-        </div>
-
-        <div class="services">
-          <article class="service-card">
-            <div class="icon">🛠️</div>
-            <h3>Copia de controles remotos</h3>
-            <p>Duplicado de controles para portones y otros mandos compatibles, con revisión del tipo de señal y sistema de funcionamiento.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">🚘</div>
-            <h3>Programación automotriz</h3>
-            <p>Programación de controles y soluciones relacionadas con cierre centralizado, según marca, modelo y evaluación previa.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">📡</div>
-            <h3>Controles para portón</h3>
-            <p>Venta, renovación y orientación en compatibilidad para distintos tipos de portones automáticos y accesos.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">🔍</div>
-            <h3>Diagnóstico y revisión</h3>
-            <p>Evaluación básica para identificar si el problema está en el control, la batería, la transmisión o la configuración.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">🏠</div>
-            <h3>Atención en terreno</h3>
-            <p>Coordinación de visitas para ciertos casos en Concepción y alrededores, dependiendo del servicio y disponibilidad.</p>
-          </article>
-
-          <article class="service-card">
-            <div class="icon">💬</div>
-            <h3>Asesoría por WhatsApp</h3>
-            <p>Respuesta rápida para que el cliente sepa si su mando tiene arreglo, copia o reemplazo antes de salir de casa.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Lo que transmite la página</h2>
-          </div>
-          <p>Le agregué un estilo más alineado al logo y a la identidad del negocio, con una imagen más sólida y profesional.</p>
-        </div>
-
-        <div class="mini-grid">
-          <div class="mini-card">
-            <strong>Imagen de marca</strong>
-            <span>Ahora la página usa tonos naranjos y cobres tomados del logo para verse más coherente con Controles Concepción.</span>
-          </div>
-          <div class="mini-card">
-            <strong>Enfoque comercial</strong>
-            <span>Todo está pensado para que el visitante entienda el servicio rápido y te escriba por WhatsApp.</span>
-          </div>
-          <div class="mini-card">
-            <strong>Lista para crecer</strong>
-            <span>Podemos sumar galería, catálogo, reseñas, mapa, casos reales y secciones más avanzadas.</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="como-funciona">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Cómo funciona</h2>
-          </div>
-          <p>Una explicación simple del proceso para que el cliente se sienta seguro antes de contactarte.</p>
-        </div>
-
-        <div class="steps">
-          <article class="step">
-            <div class="step-number">1</div>
-            <h3>Envía una foto o descripción</h3>
-            <p>El cliente manda una foto del control, el modelo o explica la falla por WhatsApp.</p>
-          </article>
-
-          <article class="step">
-            <div class="step-number">2</div>
-            <h3>Se revisa la compatibilidad</h3>
-            <p>Se evalúa si corresponde copia, programación, cambio de mando o revisión presencial.</p>
-          </article>
-
-          <article class="step">
-            <div class="step-number">3</div>
-            <h3>Se coordina la atención</h3>
-            <p>Se realiza la atención en local o en terreno, de acuerdo con el caso y disponibilidad.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Espacio para fotos o trabajos</h2>
-          </div>
-          <p>Por ahora dejé esta sección como base. Después podemos reemplazar estos bloques por imágenes reales de tus servicios.</p>
-        </div>
-
-        <div class="gallery-grid">
-          <article class="gallery-card">
-            <h3>Copias de controles</h3>
-            <p>Aquí podemos mostrar una foto real de mandos duplicados o controles nuevos listos para entrega.</p>
-          </article>
-          <article class="gallery-card">
-            <h3>Programación automotriz</h3>
-            <p>Este espacio sirve para destacar trabajos en vehículos, cierre centralizado o programación específica.</p>
-          </article>
-          <article class="gallery-card">
-            <h3>Atención en terreno</h3>
-            <p>También se puede usar para publicar servicios a domicilio, instalaciones o diagnósticos en terreno.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <h2>Preguntas frecuentes</h2>
-          </div>
-          <p>Esto ayuda a filtrar dudas comunes y hace más eficiente la conversación por WhatsApp.</p>
-        </div>
-
-        <div class="faq-grid">
-          <article class="faq">
-            <h3>¿Cómo sé si mi control tiene solución?</h3>
-            <p>Lo ideal es enviar una foto del mando y, si es posible, indicar la marca o modelo. Así se revisa compatibilidad antes de coordinar.</p>
-          </article>
-
-          <article class="faq">
-            <h3>¿Atienden a domicilio?</h3>
-            <p>Sí, ciertos trabajos se pueden coordinar en terreno según el tipo de servicio, ubicación y disponibilidad.</p>
-          </article>
-
-          <article class="faq">
-            <h3>¿Trabajan con distintas marcas?</h3>
-            <p>Sí, se revisan distintos tipos de mandos y soluciones compatibles. Cada caso se confirma antes de agendar.</p>
-          </article>
-
-          <article class="faq">
-            <h3>¿Dónde están ubicados?</h3>
-            <p>La atención base se informa en Tucapel 866, Concepción. También se puede coordinar atención según necesidad.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contacto">
-      <div class="container contact-grid">
-        <article class="contact-card">
-          <div class="section-header" style="margin-bottom: 8px;">
-            <div>
-              <h2>Contacto</h2>
-            </div>
-          </div>
-          <p>Quedó estructurado para que te contacten rápido desde celular o computador.</p>
-
-          <div class="contact-list">
-            <div class="contact-item">
-              <strong>WhatsApp</strong>
-              <a href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">+56 9 7795 6214</a>
-            </div>
-            <div class="contact-item">
-              <strong>Instagram</strong>
-              <a href="https://www.instagram.com/controlesconcepcion/" target="_blank" rel="noopener noreferrer">@controlesconcepcion</a>
-            </div>
-            <div class="contact-item">
-              <strong>Dirección</strong>
-              <a href="https://maps.google.com/?q=Tucapel+866,+Concepción,+Chile" target="_blank" rel="noopener noreferrer">Tucapel 866, Concepción, Chile</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="contact-card">
-          <h3>Lo que podemos agregar ahora</h3>
-          <ul class="list">
-            <li>Galería con fotos reales tuyas.</li>
-            <li>Mapa embebido de Google Maps.</li>
-            <li>Testimonios de clientes.</li>
-            <li>Productos o controles destacados.</li>
-            <li>Botones directos para cotizar por servicio.</li>
-            <li>Versión más premium con animaciones.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="cta">
-      <div class="container">
-        <div class="cta-box">
-          <div>
-            <h3>¿Necesitas una copia o revisar un control?</h3>
-            <p>Envíanos una foto del mando y te orientamos con la mejor alternativa disponible para tu caso.</p>
-          </div>
-          <a class="btn-whatsapp" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-line">
-      <span>© <span id="year"></span> Controles Concepción</span>
-      <span>Diseño orientado a informar, generar confianza y convertir visitas en consultas</span>
-    </div>
-  </footer>
-
-  <a class="floating-wa" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp">✆</a>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
