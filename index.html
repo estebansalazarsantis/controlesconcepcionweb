@@ -9,14 +9,14 @@
     :root {
       --bg: #0c0c0c;
       --bg-soft: #151515;
-      --card: rgba(255,255,255,0.05);
+      --card: rgba(255,147,67,0.06);
       --line: rgba(255,255,255,0.10);
       --text: #f7f5f2;
-      --muted: #c2bab2;
-      --accent: #e87a38;
-      --accent-dark: #b1612e;
-      --accent-deep: #773811;
-      --accent-brown: #3c190a;
+      --muted: #d8c1b2;
+      --accent: #f07d2f;
+      --accent-dark: #d66a24;
+      --accent-deep: #9a4618;
+      --accent-brown: #5b240d;
       --success: #25d366;
       --shadow: 0 20px 60px rgba(0,0,0,0.35);
       --radius: 24px;
@@ -29,9 +29,10 @@
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(232,122,56,0.22), transparent 22%),
-        radial-gradient(circle at 15% 12%, rgba(177,97,46,0.14), transparent 18%),
-        linear-gradient(180deg, #080808 0%, #0c0c0c 45%, #111111 100%);
+        radial-gradient(circle at top right, rgba(240,125,47,0.30), transparent 24%),
+        radial-gradient(circle at 12% 10%, rgba(214,106,36,0.22), transparent 20%),
+        radial-gradient(circle at 70% 35%, rgba(154,70,24,0.16), transparent 22%),
+        linear-gradient(180deg, #090705 0%, #0d0a08 42%, #130d0a 100%);
       color: var(--text);
     }
 
@@ -68,9 +69,9 @@
     }
 
     .brand-logo {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
       object-fit: cover;
       background: #111;
       border: 1px solid rgba(255,255,255,0.08);
@@ -79,13 +80,13 @@
 
     .brand-text strong {
       display: block;
-      font-size: 1rem;
+      font-size: 1.15rem;
       letter-spacing: 0.2px;
     }
 
     .brand-text span {
       display: block;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       color: var(--muted);
     }
 
@@ -127,7 +128,7 @@
     }
 
     .btn {
-      background: linear-gradient(135deg, var(--accent), #f39b62);
+      background: linear-gradient(135deg, #f07d2f, #ff9b47);
       color: #1c1009;
       box-shadow: var(--shadow);
     }
@@ -160,9 +161,9 @@
       align-items: center;
       gap: 8px;
       padding: 8px 12px;
-      border: 1px solid rgba(232,122,56,0.28);
+      border: 1px solid rgba(240,125,47,0.34);
       border-radius: 999px;
-      background: rgba(232,122,56,0.10);
+      background: rgba(240,125,47,0.16);
       color: #ffd7bf;
       font-size: 0.9rem;
       margin-bottom: 18px;
@@ -210,7 +211,7 @@
 
     .hero-card,
     .promo-box {
-      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.035));
+      background: linear-gradient(180deg, rgba(255,153,78,0.10), rgba(255,255,255,0.03));
       border: 1px solid var(--line);
       border-radius: 30px;
       padding: 28px;
@@ -226,7 +227,7 @@
       inset: auto -50px -60px auto;
       width: 190px;
       height: 190px;
-      background: radial-gradient(circle, rgba(232,122,56,0.25), transparent 70%);
+      background: radial-gradient(circle, rgba(240,125,47,0.34), transparent 70%);
       pointer-events: none;
     }
 
@@ -323,8 +324,8 @@
       border-radius: 18px;
       display: grid;
       place-items: center;
-      background: rgba(232,122,56,0.12);
-      border: 1px solid rgba(232,122,56,0.20);
+      background: rgba(240,125,47,0.16);
+      border: 1px solid rgba(240,125,47,0.28);
       font-size: 1.35rem;
       margin-bottom: 16px;
     }
@@ -382,7 +383,7 @@
       display: grid;
       place-items: center;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), #f39b62);
+      background: linear-gradient(135deg, #f07d2f, #ff9b47);
       color: #160e08;
       font-weight: 900;
       margin-bottom: 14px;
@@ -434,7 +435,7 @@
       align-items: center;
       gap: 20px;
       padding: 28px;
-      background: linear-gradient(135deg, rgba(232,122,56,0.16), rgba(255,255,255,0.04));
+      background: linear-gradient(135deg, rgba(240,125,47,0.22), rgba(255,255,255,0.04));
     }
 
     .floating-wa {
@@ -545,7 +546,7 @@
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">🔧 Servicio técnico y soluciones rápidas en Concepción</div>
+          <div class="eyebrow">🟧 Servicio técnico y soluciones rápidas en Concepción</div>
           <h1>Controles, duplicados y programación para portones y vehículos.</h1>
           <p>
             En Controles Concepción ofrecemos soluciones para copia y programación de controles remotos,
