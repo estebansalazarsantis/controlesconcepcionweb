@@ -122,6 +122,16 @@ padding:20px;
 border-radius:16px;
 }
 
+.card h3{
+margin-bottom:8px;
+}
+
+.card p{
+color:#bdbdbd;
+font-size:14px;
+line-height:1.4;
+}
+
 /* SLIDER */
 
 .slider{
@@ -299,10 +309,25 @@ Solicitar cotización
 
 <div class="grid">
 
-<div class="card">Controles automotrices</div>
-<div class="card">Controles portón</div>
-<div class="card">Programación</div>
-<div class="card">Atención domicilio</div>
+<div class="card">
+<h3>Controles automotrices</h3>
+<p>Duplicado y programación de controles para vehículos. Trabajamos con distintas marcas y modelos, incluyendo sincronización y prueba de funcionamiento.</p>
+</div>
+
+<div class="card">
+<h3>Controles portón</h3>
+<p>Copia y configuración de controles para portones eléctricos residenciales y comunitarios. Verificación de alcance y funcionamiento correcto.</p>
+</div>
+
+<div class="card">
+<h3>Programación</h3>
+<p>Programación y sincronización de controles nuevos o existentes. Configuración rápida con equipos profesionales.</p>
+</div>
+
+<div class="card">
+<h3>Atención domicilio</h3>
+<p>Servicio a domicilio en Concepción y alrededores. Programación y duplicado en terreno según disponibilidad.</p>
+</div>
 
 </div>
 </div>
@@ -398,7 +423,7 @@ function toggleMenu(){
 mobileMenu.classList.toggle("show")
 }
 
-/* scroll animation */
+/* animación scroll */
 
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
