@@ -49,10 +49,6 @@ top:0;
 z-index:100;
 }
 
-header .container{
-padding:8px 20px;
-}
-
 .nav{
 display:flex;
 align-items:center;
@@ -63,8 +59,6 @@ justify-content:space-between;
 height:70px;
 }
 
-/* MENU DESKTOP */
-
 .menu{
 display:flex;
 gap:25px;
@@ -74,22 +68,17 @@ align-items:center;
 .menu a{
 color:white;
 text-decoration:none;
-font-weight:500;
 }
 
 .menu a:hover{
 color:var(--primary);
 }
 
-/* HAMBURGER */
-
 .hamburger{
 display:none;
 font-size:26px;
 cursor:pointer;
 }
-
-/* MOBILE MENU */
 
 .mobile-menu{
 display:none;
@@ -104,9 +93,9 @@ border-bottom:2px solid var(--primary);
 
 .mobile-menu a{
 display:block;
+padding:10px 0;
 color:white;
 text-decoration:none;
-padding:10px 0;
 }
 
 .mobile-menu.show{
@@ -118,12 +107,10 @@ display:block;
 .hero{
 padding:50px 20px;
 text-align:center;
-background:linear-gradient(180deg,#000,#0c0c0c);
 }
 
 .banner{
 background:var(--primary);
-color:white;
 padding:10px 16px;
 border-radius:8px;
 display:inline-block;
@@ -138,17 +125,17 @@ margin-bottom:10px;
 
 .hero p{
 color:var(--muted);
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .btn{
 background:var(--primary);
 color:white;
-padding:12px 22px;
+padding:12px 20px;
 border-radius:10px;
 text-decoration:none;
-font-weight:600;
 display:inline-block;
+font-weight:600;
 }
 
 .btn:hover{
@@ -166,15 +153,6 @@ text-align:center;
 margin-bottom:40px;
 }
 
-.section-header h2{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.section-header p{
-color:var(--muted);
-}
-
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -184,31 +162,81 @@ gap:20px;
 .card{
 background:var(--card);
 padding:25px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,0.05);
+border-radius:16px;
 }
 
-.card h3{
-color:var(--primary);
-margin-bottom:10px;
+/* SLIDER */
+
+.slider{
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-snap-type:x mandatory;
+padding-bottom:10px;
+}
+
+.slider::-webkit-scrollbar{
+height:8px;
+}
+
+.slider::-webkit-scrollbar-thumb{
+background:var(--primary);
+border-radius:10px;
 }
 
 .gallery-card{
+min-width:300px;
 background:var(--card);
-padding:20px;
-border-radius:18px;
+padding:15px;
+border-radius:16px;
+scroll-snap-align:start;
 }
 
 .gallery-card img{
 width:100%;
-height:180px;
+height:200px;
 object-fit:cover;
 border-radius:12px;
-margin-bottom:12px;
+margin-bottom:10px;
+cursor:pointer;
+transition:.3s;
 }
 
+/* ZOOM */
+
+.gallery-card img:hover{
+transform:scale(1.05);
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.lightbox.show{
+display:flex;
+}
+
+/* MAP */
+
 .map{
-border-radius:18px;
+border-radius:16px;
 overflow:hidden;
 margin-top:20px;
 }
@@ -249,6 +277,10 @@ display:block;
 height:55px;
 }
 
+.gallery-card{
+min-width:260px;
+}
+
 }
 
 </style>
@@ -263,9 +295,7 @@ height:55px;
 <img src="logo.png">
 </div>
 
-<div class="hamburger" onclick="toggleMenu()">
-☰
-</div>
+<div class="hamburger" onclick="toggleMenu()">☰</div>
 
 <nav class="menu">
 <a href="#inicio">Inicio</a>
@@ -279,11 +309,11 @@ height:55px;
 </div>
 
 <div class="mobile-menu" id="mobileMenu">
-<a href="#inicio" onclick="toggleMenu()">Inicio</a>
-<a href="#servicios" onclick="toggleMenu()">Servicios</a>
-<a href="#trabajos" onclick="toggleMenu()">Trabajos</a>
-<a href="#testimonios" onclick="toggleMenu()">Opiniones</a>
-<a href="#contacto" onclick="toggleMenu()">Ubicación</a>
+<a href="#inicio">Inicio</a>
+<a href="#servicios">Servicios</a>
+<a href="#trabajos">Trabajos</a>
+<a href="#testimonios">Opiniones</a>
+<a href="#contacto">Ubicación</a>
 <a href="https://wa.me/56977956214">WhatsApp</a>
 </div>
 
@@ -297,7 +327,6 @@ Duplicado de controles desde $18.000
 </div>
 
 <h1>Duplicado y programación de controles</h1>
-
 <p>Automotriz • Portones eléctricos • Atención a domicilio</p>
 
 <a class="btn" href="https://wa.me/56977956214">
@@ -317,12 +346,12 @@ Solicitar cotización
 <div class="grid">
 
 <div class="card">
-<h3>Controles Automotrices</h3>
+<h3>Controles automotrices</h3>
 Duplicado y programación
 </div>
 
 <div class="card">
-<h3>Controles de Portón</h3>
+<h3>Controles de portón</h3>
 Configuración y copia
 </div>
 
@@ -333,7 +362,7 @@ Sincronización completa
 
 <div class="card">
 <h3>Atención a domicilio</h3>
-Servicio en terreno en Concepción
+Servicio en terreno
 </div>
 
 </div>
@@ -347,22 +376,24 @@ Servicio en terreno en Concepción
 <h2>Trabajos reales</h2>
 </div>
 
-<div class="grid">
+<div class="slider">
 
 <div class="gallery-card">
-<img src="duplicado-hyundai-tucson-2010.jpg">
-<h3>Hyundai Tucson 2010</h3>
-<p>Duplicado con programación.</p>
+<img src="duplicado-hyundai-tucson-2010.jpg" onclick="openImg(this)">
+<h3>Hyundai Tucson</h3>
+<p>Duplicado con programación</p>
 </div>
 
 <div class="gallery-card">
+<img src="Duplicado_Mando_Casa.jpg" onclick="openImg(this)">
 <h3>Controles portón</h3>
-<p>Duplicado residencial.</p>
+<p>Duplicado residencial</p>
 </div>
 
 <div class="gallery-card">
-<h3>Programación automotriz</h3>
-<p>Programación completa.</p>
+<img src="programacion.jpg" onclick="openImg(this)">
+<h3>Programación</h3>
+<p>Programación automotriz</p>
 </div>
 
 </div>
@@ -436,6 +467,10 @@ style="border:0;">
 Controles Concepción © 2026
 </footer>
 
+<div class="lightbox" id="lightbox" onclick="closeImg()">
+<img id="lightbox-img">
+</div>
+
 <script>
 
 function toggleMenu(){
@@ -455,6 +490,17 @@ entry.target.classList.add("show");
 document.querySelectorAll(".fade").forEach(el=>{
 observer.observe(el);
 });
+
+/* lightbox */
+
+function openImg(img){
+document.getElementById("lightbox").classList.add("show");
+document.getElementById("lightbox-img").src = img.src;
+}
+
+function closeImg(){
+document.getElementById("lightbox").classList.remove("show");
+}
 
 </script>
 
