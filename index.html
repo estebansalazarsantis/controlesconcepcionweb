@@ -122,7 +122,7 @@ padding:20px;
 border-radius:16px;
 }
 
-/* SLIDER HORIZONTAL */
+/* SLIDER */
 
 .slider{
 display:flex;
@@ -162,6 +162,17 @@ transition:.3s;
 transform:scale(1.05);
 }
 
+.gallery-card h3{
+margin-top:10px;
+}
+
+.gallery-card p{
+color:#bdbdbd;
+font-size:14px;
+margin-top:5px;
+line-height:1.4;
+}
+
 /* LIGHTBOX */
 
 .lightbox{
@@ -194,7 +205,6 @@ right:30px;
 font-size:40px;
 color:white;
 cursor:pointer;
-z-index:10000;
 }
 
 /* MAP */
@@ -309,17 +319,20 @@ Solicitar cotización
 
 <div class="gallery-card">
 <img src="duplicado-hyundai-tucson-2010.jpg" onclick="openImg(this)">
-<h3>Hyundai Tucson</h3>
+<h3>Hyundai Tucson 2010</h3>
+<p>Duplicado y programación completa del control. Sincronización con vehículo y prueba funcionando correctamente.</p>
 </div>
 
 <div class="gallery-card">
 <img src="Duplicado_Mando_Casa.jpg" onclick="openImg(this)">
-<h3>Controles portón</h3>
+<h3>Controles portón casa</h3>
+<p>Duplicado de mando residencial. Configuración y prueba de alcance. Cliente recupera acceso sin problemas.</p>
 </div>
 
 <div class="gallery-card">
 <img src="programacion.jpg" onclick="openImg(this)">
-<h3>Programación</h3>
+<h3>Programación control</h3>
+<p>Programación y sincronización de control remoto. Entrega inmediata y verificación en terreno.</p>
 </div>
 
 </div>
@@ -387,13 +400,17 @@ mobileMenu.classList.toggle("show")
 
 /* scroll animation */
 
-const observer=new IntersectionObserver(e=>{
-e.forEach(i=>{
-if(i.isIntersecting)i.target.classList.add("show")
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show")
+}
 })
 })
 
-document.querySelectorAll(".fade").forEach(el=>observer.observe(el))
+document.querySelectorAll(".fade").forEach(el=>{
+observer.observe(el)
+})
 
 /* lightbox */
 
@@ -403,7 +420,7 @@ document.getElementById("lightbox-img").src=img.src
 }
 
 function closeImg(e){
-if(e.target.id==="lightbox"||e.target.className==="close"){
+if(e.target.id==="lightbox" || e.target.className==="close"){
 document.getElementById("lightbox").classList.remove("show")
 }
 }
