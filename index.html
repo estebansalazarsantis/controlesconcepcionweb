@@ -10,7 +10,6 @@
 
 :root{
 --primary:#ff6a00;
---primary-light:#ff8c2a;
 --dark:#0b0b0b;
 --card:#141414;
 --text:#ffffff;
@@ -21,7 +20,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:system-ui,-apple-system,Segoe UI,Roboto;
+font-family:system-ui;
 }
 
 html{
@@ -30,7 +29,7 @@ scroll-behavior:smooth;
 
 body{
 background:var(--dark);
-color:var(--text);
+color:white;
 }
 
 .container{
@@ -50,7 +49,7 @@ z-index:100;
 }
 
 header .container{
-padding:8px 20px;
+padding:10px 20px;
 }
 
 .nav{
@@ -60,23 +59,26 @@ justify-content:space-between;
 }
 
 .logo img{
-height:70px;
+height:65px;
 }
 
 .menu{
 display:flex;
-gap:25px;
+gap:20px;
 align-items:center;
 }
 
 .menu a{
 color:white;
 text-decoration:none;
-font-weight:500;
 }
 
-.menu a:hover{
-color:var(--primary);
+.btn{
+background:var(--primary);
+padding:10px 18px;
+border-radius:8px;
+color:white;
+text-decoration:none;
 }
 
 /* HERO */
@@ -84,14 +86,11 @@ color:var(--primary);
 .hero{
 padding:50px 20px;
 text-align:center;
-background:linear-gradient(180deg,#000,#0c0c0c);
-animation:fadeIn 1s ease;
 }
 
 .banner{
 background:var(--primary);
-color:white;
-padding:10px 16px;
+padding:8px 14px;
 border-radius:8px;
 display:inline-block;
 margin-bottom:20px;
@@ -99,48 +98,24 @@ font-weight:600;
 }
 
 .hero h1{
-font-size:36px;
+font-size:34px;
 margin-bottom:10px;
 }
 
 .hero p{
 color:var(--muted);
-margin-bottom:25px;
-}
-
-.btn{
-background:var(--primary);
-color:white;
-padding:12px 22px;
-border-radius:10px;
-text-decoration:none;
-font-weight:600;
-display:inline-block;
-}
-
-.btn:hover{
-background:var(--primary-light);
+margin-bottom:20px;
 }
 
 /* SECTIONS */
 
 .section{
 padding:60px 0;
-animation:fadeUp 1s ease;
 }
 
 .section-header{
 text-align:center;
-margin-bottom:40px;
-}
-
-.section-header h2{
-font-size:28px;
-margin-bottom:10px;
-}
-
-.section-header p{
-color:var(--muted);
+margin-bottom:30px;
 }
 
 .grid{
@@ -151,56 +126,76 @@ gap:20px;
 
 .card{
 background:var(--card);
-padding:25px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,0.05);
-}
-
-.card h3{
-color:var(--primary);
-margin-bottom:10px;
-}
-
-.gallery-card{
-background:var(--card);
 padding:20px;
-border-radius:18px;
+border-radius:16px;
 }
 
-.gallery-card img{
+/* SLIDER */
+
+.slider{
+position:relative;
+overflow:hidden;
+}
+
+.slides{
+display:flex;
+transition:0.5s;
+}
+
+.slide{
+min-width:100%;
+padding:10px;
+}
+
+.slide img{
 width:100%;
-height:180px;
+height:220px;
 object-fit:cover;
 border-radius:12px;
-margin-bottom:12px;
 }
 
+.slider-buttons{
+text-align:center;
+margin-top:10px;
+}
+
+.slider-buttons button{
+background:var(--primary);
+border:none;
+color:white;
+padding:8px 12px;
+margin:5px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* MAP */
+
 .map{
-border-radius:18px;
+border-radius:16px;
 overflow:hidden;
 margin-top:20px;
 }
 
-/* ANIMACIONES */
+/* MOBILE */
 
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
+@media(max-width:768px){
+
+.menu{
+display:none;
 }
 
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(20px);
+.hero h1{
+font-size:26px;
 }
-to{
-opacity:1;
-transform:translateY(0);
+
+.logo img{
+height:50px;
 }
+
 }
 
 footer{
-border-top:1px solid rgba(255,255,255,.05);
 text-align:center;
 padding:30px;
 color:var(--muted);
@@ -219,7 +214,6 @@ color:var(--muted);
 </div>
 
 <nav class="menu">
-<a href="#inicio">Inicio</a>
 <a href="#servicios">Servicios</a>
 <a href="#trabajos">Trabajos</a>
 <a href="#testimonios">Opiniones</a>
@@ -230,141 +224,124 @@ color:var(--muted);
 </div>
 </header>
 
-<section class="hero" id="inicio">
-<div class="container">
+<section class="hero">
 
 <div class="banner">
-Duplicado de controles desde $15.000
+Duplicado de controles desde $18.000
 </div>
 
 <h1>Duplicado y programación de controles</h1>
 
-<p>Automotriz • Portones eléctricos • Atención a domicilio</p>
+<p>Automotriz • Portones • Atención a domicilio</p>
 
 <a class="btn" href="https://wa.me/56977956214">
 Solicitar cotización
 </a>
 
-</div>
 </section>
 
 <section class="section" id="servicios">
-<div class="container">
 
 <div class="section-header">
 <h2>Servicios</h2>
-<p>Soluciones rápidas y profesionales</p>
 </div>
 
 <div class="grid">
 
 <div class="card">
-<h3>Controles Automotrices</h3>
-<p>Duplicado y programación de controles para vehículos.</p>
+<h3>Controles automotrices</h3>
+Duplicado y programación
 </div>
 
 <div class="card">
-<h3>Controles de Portón</h3>
-<p>Copia y configuración de controles para portones eléctricos.</p>
+<h3>Controles portón</h3>
+Configuración y copia
 </div>
 
 <div class="card">
 <h3>Programación</h3>
-<p>Sincronización y prueba completa de funcionamiento.</p>
+Sincronización completa
 </div>
 
 <div class="card">
 <h3>Atención a domicilio</h3>
-<p>Servicio en terreno para vehículos y domicilios en Concepción.</p>
-</div>
-
+Servicio en terreno
 </div>
 
 </div>
 </section>
 
 <section class="section" id="trabajos">
-<div class="container">
 
 <div class="section-header">
 <h2>Trabajos reales</h2>
 </div>
 
-<div class="grid">
+<div class="slider">
 
-<div class="gallery-card">
+<div class="slides" id="slides">
+
+<div class="slide">
 <img src="duplicado-hyundai-tucson-2010.jpg">
-<h3>Hyundai Tucson 2010</h3>
-<p>Duplicado con programación.</p>
 </div>
 
-<div class="gallery-card">
-<h3>Controles portón</h3>
-<p>Duplicado residencial.</p>
+<div class="slide">
+<img src="duplicado-hyundai-tucson-2010.jpg">
 </div>
 
-<div class="gallery-card">
-<h3>Programación automotriz</h3>
-<p>Programación completa.</p>
+<div class="slide">
+<img src="duplicado-hyundai-tucson-2010.jpg">
 </div>
 
 </div>
 
 </div>
+
+<div class="slider-buttons">
+<button onclick="prev()">◀</button>
+<button onclick="next()">▶</button>
+</div>
+
 </section>
 
 <section class="section" id="testimonios">
-<div class="container">
 
 <div class="section-header">
-<h2>Opiniones de clientes</h2>
-<p>Comentarios reales de clientes</p>
+<h2>Opiniones</h2>
 </div>
 
 <div class="grid">
 
 <div class="card">
 ★★★★★
-<p>Muy buena atención, rápido y funcionando perfecto. Totalmente recomendado.</p>
-<strong>Cliente Google</strong>
+Excelente servicio y rápido.
 </div>
 
 <div class="card">
 ★★★★★
-<p>Me duplicaron el control del auto en minutos. Excelente servicio.</p>
-<strong>Cliente Google</strong>
+Muy buena atención.
 </div>
 
 <div class="card">
 ★★★★★
-<p>Buen precio y atención. Además fue rápido.</p>
-<strong>Cliente Google</strong>
+Recomendado totalmente.
 </div>
 
 </div>
 
-<div style="text-align:center;margin-top:25px">
-<a class="btn" target="_blank"
-href="https://share.google/9liqz3YpbaAVVMrvb">
-Ver más opiniones en Google
-</a>
-</div>
-
-</div>
 </section>
 
 <section class="section" id="contacto">
-<div class="container">
 
 <div class="section-header">
 <h2>Ubicación</h2>
-<p>Tucapel 866, Concepción</p>
+Tucapel 866, Concepción
 </div>
 
-<div style="text-align:center;margin-bottom:20px">
+<div style="text-align:center">
 <a class="btn" target="_blank"
 href="https://maps.google.com/?q=Tucapel+866+Concepcion">
-Cómo llegar en Google Maps
+Ver en Google Maps
 </a>
 </div>
 
@@ -372,17 +349,38 @@ Cómo llegar en Google Maps
 <iframe
 src="https://maps.google.com/maps?q=Tucapel%20866%20Concepcion&t=&z=15&ie=UTF8&iwloc=&output=embed"
 width="100%"
-height="350"
-style="border:0;">
+height="350">
 </iframe>
 </div>
 
-</div>
 </section>
 
 <footer>
-Controles Concepción © 2026
+Controles Concepción
 </footer>
+
+<script>
+
+let index = 0;
+
+function show(){
+document.getElementById("slides").style.transform =
+"translateX(-"+index*100+"%)";
+}
+
+function next(){
+index++;
+if(index>2) index=0;
+show();
+}
+
+function prev(){
+index--;
+if(index<0) index=2;
+show();
+}
+
+</script>
 
 </body>
 </html>
