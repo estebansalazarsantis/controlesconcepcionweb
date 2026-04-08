@@ -122,26 +122,31 @@ padding:20px;
 border-radius:16px;
 }
 
-/* SLIDER */
-
-.slider-wrapper{
-position:relative;
-}
+/* SLIDER HORIZONTAL */
 
 .slider{
 display:flex;
-overflow:hidden;
+gap:20px;
+overflow-x:auto;
+padding-bottom:10px;
+scroll-snap-type:x mandatory;
 }
 
-.slide{
-min-width:100%;
-padding:10px;
+.slider::-webkit-scrollbar{
+height:8px;
+}
+
+.slider::-webkit-scrollbar-thumb{
+background:var(--primary);
+border-radius:10px;
 }
 
 .gallery-card{
+min-width:300px;
 background:var(--card);
 padding:15px;
 border-radius:16px;
+scroll-snap-align:start;
 }
 
 .gallery-card img{
@@ -157,33 +162,7 @@ transition:.3s;
 transform:scale(1.05);
 }
 
-/* arrows */
-
-.arrow{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-background:rgba(0,0,0,.6);
-border:none;
-color:white;
-font-size:28px;
-padding:10px 15px;
-cursor:pointer;
-z-index:10;
-}
-
-.arrow.left{left:0}
-.arrow.right{right:0}
-
-/* counter */
-
-.counter{
-text-align:center;
-margin-top:10px;
-color:var(--muted);
-}
-
-/* lightbox */
+/* LIGHTBOX */
 
 .lightbox{
 position:fixed;
@@ -195,16 +174,17 @@ background:rgba(0,0,0,.95);
 display:none;
 align-items:center;
 justify-content:center;
-z-index:999;
+z-index:9999;
+}
+
+.lightbox.show{
+display:flex;
 }
 
 .lightbox img{
 max-width:90%;
 max-height:90%;
-}
-
-.lightbox.show{
-display:flex;
+border-radius:10px;
 }
 
 .close{
@@ -212,10 +192,12 @@ position:absolute;
 top:20px;
 right:30px;
 font-size:40px;
+color:white;
 cursor:pointer;
+z-index:10000;
 }
 
-/* map */
+/* MAP */
 
 .map{
 border-radius:16px;
@@ -223,7 +205,7 @@ overflow:hidden;
 margin-top:20px;
 }
 
-/* anim */
+/* ANIM */
 
 .fade{
 opacity:0;
@@ -240,6 +222,10 @@ transform:none;
 
 .menu{display:none}
 .hamburger{display:block}
+
+.gallery-card{
+min-width:260px;
+}
 
 }
 
@@ -303,21 +289,10 @@ Solicitar cotización
 
 <div class="grid">
 
-<div class="card">
-Controles automotrices
-</div>
-
-<div class="card">
-Controles portón
-</div>
-
-<div class="card">
-Programación
-</div>
-
-<div class="card">
-Atención domicilio
-</div>
+<div class="card">Controles automotrices</div>
+<div class="card">Controles portón</div>
+<div class="card">Programación</div>
+<div class="card">Atención domicilio</div>
 
 </div>
 </div>
@@ -330,38 +305,21 @@ Atención domicilio
 <h2>Trabajos reales</h2>
 </div>
 
-<div class="slider-wrapper">
+<div class="slider">
 
-<button class="arrow left" onclick="prev()">‹</button>
-<button class="arrow right" onclick="next()">›</button>
-
-<div class="slider" id="slider">
-
-<div class="slide">
 <div class="gallery-card">
 <img src="duplicado-hyundai-tucson-2010.jpg" onclick="openImg(this)">
 <h3>Hyundai Tucson</h3>
 </div>
-</div>
 
-<div class="slide">
 <div class="gallery-card">
 <img src="Duplicado_Mando_Casa.jpg" onclick="openImg(this)">
 <h3>Controles portón</h3>
 </div>
-</div>
 
-<div class="slide">
 <div class="gallery-card">
 <img src="programacion.jpg" onclick="openImg(this)">
 <h3>Programación</h3>
-</div>
-</div>
-
-</div>
-
-<div class="counter" id="counter">
-1 / 3
 </div>
 
 </div>
@@ -377,11 +335,9 @@ Atención domicilio
 </div>
 
 <div class="grid">
-
 <div class="card">★★★★★ Excelente servicio</div>
 <div class="card">★★★★★ Muy recomendado</div>
 <div class="card">★★★★★ Rápido y profesional</div>
-
 </div>
 
 <div style="text-align:center;margin-top:20px">
@@ -429,7 +385,7 @@ function toggleMenu(){
 mobileMenu.classList.toggle("show")
 }
 
-/* scroll anim */
+/* scroll animation */
 
 const observer=new IntersectionObserver(e=>{
 e.forEach(i=>{
@@ -439,60 +395,23 @@ if(i.isIntersecting)i.target.classList.add("show")
 
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el))
 
-/* slider */
-
-let index=0
-const slider=document.getElementById("slider")
-const total=slider.children.length
-
-function update(){
-slider.style.transform=`translateX(-${index*100}%)`
-counter.innerText=`${index+1} / ${total}`
-}
-
-function next(){
-index=(index+1)%total
-update()
-}
-
-function prev(){
-index=(index-1+total)%total
-update()
-}
-
-/* autoplay */
-
-setInterval(next,4000)
-
-/* swipe */
-
-let startX=0
-
-slider.addEventListener("touchstart",e=>{
-startX=e.touches[0].clientX
-})
-
-slider.addEventListener("touchend",e=>{
-let endX=e.changedTouches[0].clientX
-if(startX-endX>50) next()
-if(endX-startX>50) prev()
-})
-
 /* lightbox */
 
 function openImg(img){
-lightbox.classList.add("show")
-lightboxImg.src=img.src
+document.getElementById("lightbox").classList.add("show")
+document.getElementById("lightbox-img").src=img.src
 }
 
 function closeImg(e){
 if(e.target.id==="lightbox"||e.target.className==="close"){
-lightbox.classList.remove("show")
+document.getElementById("lightbox").classList.remove("show")
 }
 }
 
-document.addEventListener("keydown",e=>{
-if(e.key==="Escape") lightbox.classList.remove("show")
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape"){
+document.getElementById("lightbox").classList.remove("show")
+}
 })
 
 </script>
