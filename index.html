@@ -10,6 +10,7 @@
 
 :root{
 --primary:#ff6a00;
+--primary-light:#ff8c2a;
 --dark:#0b0b0b;
 --card:#141414;
 --text:#ffffff;
@@ -20,7 +21,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:system-ui;
+font-family:system-ui,-apple-system,Segoe UI,Roboto;
 }
 
 html{
@@ -29,7 +30,7 @@ scroll-behavior:smooth;
 
 body{
 background:var(--dark);
-color:white;
+color:var(--text);
 }
 
 .container{
@@ -49,7 +50,7 @@ z-index:100;
 }
 
 header .container{
-padding:10px 20px;
+padding:8px 20px;
 }
 
 .nav{
@@ -59,26 +60,57 @@ justify-content:space-between;
 }
 
 .logo img{
-height:65px;
+height:70px;
 }
+
+/* MENU DESKTOP */
 
 .menu{
 display:flex;
-gap:20px;
+gap:25px;
 align-items:center;
 }
 
 .menu a{
 color:white;
 text-decoration:none;
+font-weight:500;
 }
 
-.btn{
-background:var(--primary);
-padding:10px 18px;
-border-radius:8px;
+.menu a:hover{
+color:var(--primary);
+}
+
+/* HAMBURGER */
+
+.hamburger{
+display:none;
+font-size:26px;
+cursor:pointer;
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+display:none;
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:black;
+padding:20px;
+border-bottom:2px solid var(--primary);
+}
+
+.mobile-menu a{
+display:block;
 color:white;
 text-decoration:none;
+padding:10px 0;
+}
+
+.mobile-menu.show{
+display:block;
 }
 
 /* HERO */
@@ -86,11 +118,13 @@ text-decoration:none;
 .hero{
 padding:50px 20px;
 text-align:center;
+background:linear-gradient(180deg,#000,#0c0c0c);
 }
 
 .banner{
 background:var(--primary);
-padding:8px 14px;
+color:white;
+padding:10px 16px;
 border-radius:8px;
 display:inline-block;
 margin-bottom:20px;
@@ -98,13 +132,27 @@ font-weight:600;
 }
 
 .hero h1{
-font-size:34px;
+font-size:36px;
 margin-bottom:10px;
 }
 
 .hero p{
 color:var(--muted);
-margin-bottom:20px;
+margin-bottom:25px;
+}
+
+.btn{
+background:var(--primary);
+color:white;
+padding:12px 22px;
+border-radius:10px;
+text-decoration:none;
+font-weight:600;
+display:inline-block;
+}
+
+.btn:hover{
+background:var(--primary-light);
 }
 
 /* SECTIONS */
@@ -115,7 +163,16 @@ padding:60px 0;
 
 .section-header{
 text-align:center;
-margin-bottom:30px;
+margin-bottom:40px;
+}
+
+.section-header h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.section-header p{
+color:var(--muted);
 }
 
 .grid{
@@ -126,55 +183,41 @@ gap:20px;
 
 .card{
 background:var(--card);
+padding:25px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.card h3{
+color:var(--primary);
+margin-bottom:10px;
+}
+
+.gallery-card{
+background:var(--card);
 padding:20px;
-border-radius:16px;
+border-radius:18px;
 }
 
-/* SLIDER */
-
-.slider{
-position:relative;
-overflow:hidden;
-}
-
-.slides{
-display:flex;
-transition:0.5s;
-}
-
-.slide{
-min-width:100%;
-padding:10px;
-}
-
-.slide img{
+.gallery-card img{
 width:100%;
-height:220px;
+height:180px;
 object-fit:cover;
 border-radius:12px;
+margin-bottom:12px;
 }
-
-.slider-buttons{
-text-align:center;
-margin-top:10px;
-}
-
-.slider-buttons button{
-background:var(--primary);
-border:none;
-color:white;
-padding:8px 12px;
-margin:5px;
-border-radius:6px;
-cursor:pointer;
-}
-
-/* MAP */
 
 .map{
-border-radius:16px;
+border-radius:18px;
 overflow:hidden;
 margin-top:20px;
+}
+
+footer{
+border-top:1px solid rgba(255,255,255,.05);
+text-align:center;
+padding:30px;
+color:var(--muted);
 }
 
 /* MOBILE */
@@ -185,20 +228,14 @@ margin-top:20px;
 display:none;
 }
 
-.hero h1{
-font-size:26px;
+.hamburger{
+display:block;
 }
 
 .logo img{
-height:50px;
+height:55px;
 }
 
-}
-
-footer{
-text-align:center;
-padding:30px;
-color:var(--muted);
 }
 
 </style>
@@ -213,7 +250,12 @@ color:var(--muted);
 <img src="logo.png">
 </div>
 
+<div class="hamburger" onclick="toggleMenu()">
+☰
+</div>
+
 <nav class="menu">
+<a href="#inicio">Inicio</a>
 <a href="#servicios">Servicios</a>
 <a href="#trabajos">Trabajos</a>
 <a href="#testimonios">Opiniones</a>
@@ -222,9 +264,20 @@ color:var(--muted);
 </nav>
 
 </div>
+
+<div class="mobile-menu" id="mobileMenu">
+<a href="#inicio" onclick="toggleMenu()">Inicio</a>
+<a href="#servicios" onclick="toggleMenu()">Servicios</a>
+<a href="#trabajos" onclick="toggleMenu()">Trabajos</a>
+<a href="#testimonios" onclick="toggleMenu()">Opiniones</a>
+<a href="#contacto" onclick="toggleMenu()">Ubicación</a>
+<a href="https://wa.me/56977956214">WhatsApp</a>
+</div>
+
 </header>
 
-<section class="hero">
+<section class="hero" id="inicio">
+<div class="container">
 
 <div class="banner">
 Duplicado de controles desde $18.000
@@ -232,15 +285,17 @@ Duplicado de controles desde $18.000
 
 <h1>Duplicado y programación de controles</h1>
 
-<p>Automotriz • Portones • Atención a domicilio</p>
+<p>Automotriz • Portones eléctricos • Atención a domicilio</p>
 
 <a class="btn" href="https://wa.me/56977956214">
 Solicitar cotización
 </a>
 
+</div>
 </section>
 
 <section class="section" id="servicios">
+<div class="container">
 
 <div class="section-header">
 <h2>Servicios</h2>
@@ -249,12 +304,12 @@ Solicitar cotización
 <div class="grid">
 
 <div class="card">
-<h3>Controles automotrices</h3>
+<h3>Controles Automotrices</h3>
 Duplicado y programación
 </div>
 
 <div class="card">
-<h3>Controles portón</h3>
+<h3>Controles de Portón</h3>
 Configuración y copia
 </div>
 
@@ -265,46 +320,45 @@ Sincronización completa
 
 <div class="card">
 <h3>Atención a domicilio</h3>
-Servicio en terreno
+Servicio en terreno en Concepción
 </div>
 
+</div>
 </div>
 </section>
 
 <section class="section" id="trabajos">
+<div class="container">
 
 <div class="section-header">
 <h2>Trabajos reales</h2>
 </div>
 
-<div class="slider">
+<div class="grid">
 
-<div class="slides" id="slides">
-
-<div class="slide">
+<div class="gallery-card">
 <img src="duplicado-hyundai-tucson-2010.jpg">
+<h3>Hyundai Tucson 2010</h3>
+<p>Duplicado con programación.</p>
 </div>
 
-<div class="slide">
-<img src="duplicado-hyundai-tucson-2010.jpg">
+<div class="gallery-card">
+<h3>Controles portón</h3>
+<p>Duplicado residencial.</p>
 </div>
 
-<div class="slide">
-<img src="duplicado-hyundai-tucson-2010.jpg">
+<div class="gallery-card">
+<h3>Programación automotriz</h3>
+<p>Programación completa.</p>
 </div>
 
 </div>
 
 </div>
-
-<div class="slider-buttons">
-<button onclick="prev()">◀</button>
-<button onclick="next()">▶</button>
-</div>
-
 </section>
 
 <section class="section" id="testimonios">
+<div class="container">
 
 <div class="section-header">
 <h2>Opiniones</h2>
@@ -313,33 +367,33 @@ Servicio en terreno
 <div class="grid">
 
 <div class="card">
-★★★★★
-Excelente servicio y rápido.
+★★★★★ Excelente servicio y rápido.
 </div>
 
 <div class="card">
-★★★★★
-Muy buena atención.
+★★★★★ Muy buena atención.
 </div>
 
 <div class="card">
-★★★★★
-Recomendado totalmente.
+★★★★★ Recomendado totalmente.
 </div>
 
 </div>
 
+</div>
 </section>
 
 <section class="section" id="contacto">
+<div class="container">
 
 <div class="section-header">
 <h2>Ubicación</h2>
-Tucapel 866, Concepción
+<p>Tucapel 866, Concepción</p>
 </div>
 
-<div style="text-align:center">
-<a class="btn" target="_blank"
+<div style="text-align:center;margin-bottom:20px">
+<a class="btn"
+target="_blank"
 href="https://maps.google.com/?q=Tucapel+866+Concepcion">
 Ver en Google Maps
 </a>
@@ -349,37 +403,22 @@ Ver en Google Maps
 <iframe
 src="https://maps.google.com/maps?q=Tucapel%20866%20Concepcion&t=&z=15&ie=UTF8&iwloc=&output=embed"
 width="100%"
-height="350">
+height="350"
+style="border:0;">
 </iframe>
 </div>
 
+</div>
 </section>
 
 <footer>
-Controles Concepción
+Controles Concepción © 2026
 </footer>
 
 <script>
-
-let index = 0;
-
-function show(){
-document.getElementById("slides").style.transform =
-"translateX(-"+index*100+"%)";
+function toggleMenu(){
+document.getElementById("mobileMenu").classList.toggle("show");
 }
-
-function next(){
-index++;
-if(index>2) index=0;
-show();
-}
-
-function prev(){
-index--;
-if(index<0) index=2;
-show();
-}
-
 </script>
 
 </body>
