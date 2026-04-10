@@ -3,6 +3,1300 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Duplicado y programación de controles automotrices y de portón en Concepción. Atención presencial y a domicilio según disponibilidad." />
+  <title>Controles Concepción | Duplicado y programación de controles</title>
+
+  <style>
+    :root{
+      --primary:#ff6a00;
+      --primary-soft:#ff8c33;
+      --primary-dark:#d95400;
+      --dark:#0b0b0b;
+      --dark-2:#101010;
+      --card:#141414;
+      --card-2:#1a1a1a;
+      --text:#ffffff;
+      --muted:#bdbdbd;
+      --line:rgba(255,255,255,.08);
+      --success:#35c26b;
+      --shadow:0 18px 40px rgba(0,0,0,.35);
+      --radius:24px;
+      --radius-sm:16px;
+      --max:1180px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,106,0,.15), transparent 26%),
+        linear-gradient(180deg, #0a0a0a 0%, #0b0b0b 100%);
+      color:var(--text);
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+
+    .container{
+      width:min(var(--max), calc(100% - 32px));
+      margin:auto;
+    }
+
+    .section{padding:88px 0}
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border:1px solid rgba(255,106,0,.25);
+      border-radius:999px;
+      background:rgba(255,106,0,.08);
+      color:#ffd2b1;
+      font-size:.92rem;
+      margin-bottom:18px;
+    }
+
+    .section-header{
+      max-width:720px;
+      margin:0 auto 34px;
+      text-align:center;
+    }
+
+    .section-header h2{
+      font-size:clamp(1.9rem, 3vw, 2.7rem);
+      line-height:1.1;
+      margin-bottom:12px;
+    }
+
+    .section-header p{
+      color:var(--muted);
+      font-size:1rem;
+    }
+
+    .btn,
+    .btn-outline{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      min-height:52px;
+      padding:0 22px;
+      border-radius:14px;
+      font-weight:700;
+      transition:transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .btn{
+      background:linear-gradient(180deg, var(--primary-soft), var(--primary));
+      color:white;
+      box-shadow:0 10px 28px rgba(255,106,0,.25);
+    }
+
+    .btn:hover,
+    .btn-outline:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn-outline{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.02);
+      color:white;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(14px);
+      background:rgba(11,11,11,.82);
+      border-bottom:1px solid rgba(255,106,0,.16);
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:76px;
+      height:76px;
+      object-fit:contain;
+      filter:drop-shadow(0 10px 24px rgba(255,106,0,.15));
+    }
+
+    .brand-copy strong{
+      display:block;
+      font-size:1rem;
+      letter-spacing:.2px;
+    }
+
+    .brand-copy span{
+      display:block;
+      color:var(--muted);
+      font-size:.88rem;
+      margin-top:2px;
+    }
+
+    .menu{
+      display:flex;
+      align-items:center;
+      gap:22px;
+    }
+
+    .menu a{
+      color:#f2f2f2;
+      font-size:.98rem;
+      opacity:.92;
+    }
+
+    .menu a:hover{color:#fff}
+
+    .header-cta{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .hamburger{
+      display:none;
+      width:48px;
+      height:48px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.03);
+      color:white;
+      cursor:pointer;
+      font-size:1.4rem;
+    }
+
+    .mobile-menu{
+      display:none;
+      padding:0 0 18px;
+    }
+
+    .mobile-menu nav{
+      display:grid;
+      gap:10px;
+      background:rgba(255,255,255,.02);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:16px;
+    }
+
+    .mobile-menu a{
+      padding:12px 14px;
+      border-radius:12px;
+      background:rgba(255,255,255,.02);
+      color:#f1f1f1;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:72px 0 40px;
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:999px;
+      filter:blur(70px);
+      pointer-events:none;
+    }
+
+    .hero::before{
+      width:280px;
+      height:280px;
+      background:rgba(255,106,0,.18);
+      top:-60px;
+      right:-20px;
+    }
+
+    .hero::after{
+      width:220px;
+      height:220px;
+      background:rgba(255,255,255,.06);
+      left:-60px;
+      bottom:20px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .hero-copy h1{
+      font-size:clamp(2.4rem, 5vw, 4.4rem);
+      line-height:.98;
+      margin-bottom:16px;
+      max-width:760px;
+    }
+
+    .hero-copy p{
+      color:#d1d1d1;
+      font-size:1.08rem;
+      max-width:640px;
+      margin-bottom:24px;
+    }
+
+    .hero-copy p strong{color:white}
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:24px;
+    }
+
+    .hero-features{
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top:10px;
+    }
+
+    .mini-pill{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:18px;
+      padding:14px 16px;
+      color:#f3f3f3;
+      font-size:.95rem;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:30px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:auto -40px -50px auto;
+      width:180px;
+      height:180px;
+      background:radial-gradient(circle, rgba(255,106,0,.25), transparent 66%);
+      pointer-events:none;
+    }
+
+    .trust-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(53,194,107,.12);
+      color:#baf0cc;
+      border:1px solid rgba(53,194,107,.18);
+      font-size:.9rem;
+      margin-bottom:16px;
+    }
+
+    .hero-card h3{
+      font-size:1.45rem;
+      margin-bottom:10px;
+    }
+
+    .hero-card p{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .hero-list{
+      display:grid;
+      gap:10px;
+      margin-bottom:20px;
+    }
+
+    .hero-list li{
+      list-style:none;
+      display:flex;
+      gap:10px;
+      color:#f1f1f1;
+    }
+
+    .hero-list li::before{
+      content:"●";
+      color:var(--primary);
+      flex:0 0 auto;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .stat{
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:18px;
+      padding:16px;
+      text-align:center;
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.2rem;
+      margin-bottom:4px;
+    }
+
+    .stat span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .benefits{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:16px;
+      margin-top:32px;
+    }
+
+    .benefit-card,
+    .service-card,
+    .testimonial,
+    .faq-item,
+    .process-card,
+    .gallery-card,
+    .contact-card,
+    .info-card{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      border:1px solid rgba(255,255,255,.07);
+      border-radius:var(--radius-sm);
+      box-shadow:var(--shadow);
+    }
+
+    .benefit-card{
+      padding:22px;
+    }
+
+    .benefit-card strong{
+      display:block;
+      font-size:1.02rem;
+      margin-bottom:8px;
+    }
+
+    .benefit-card p{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .services-grid,
+    .gallery-grid,
+    .testimonials-grid,
+    .faq-grid,
+    .contact-grid,
+    .process-grid{
+      display:grid;
+      gap:20px;
+    }
+
+    .services-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .process-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .testimonials-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .faq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .contact-grid{grid-template-columns:1fr .9fr}
+
+    .service-card{
+      padding:24px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .service-card::after{
+      content:"";
+      position:absolute;
+      inset:auto -40px -46px auto;
+      width:120px;
+      height:120px;
+      background:radial-gradient(circle, rgba(255,106,0,.16), transparent 70%);
+      pointer-events:none;
+    }
+
+    .service-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .service-icon{
+      width:50px;
+      height:50px;
+      border-radius:15px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,106,0,.12);
+      border:1px solid rgba(255,106,0,.2);
+      font-size:1.35rem;
+    }
+
+    .service-tag{
+      font-size:.78rem;
+      color:#ffd2b1;
+      border:1px solid rgba(255,106,0,.18);
+      padding:7px 10px;
+      border-radius:999px;
+      background:rgba(255,106,0,.07);
+    }
+
+    .service-card h3{
+      font-size:1.1rem;
+      margin-bottom:10px;
+    }
+
+    .service-card p{
+      color:var(--muted);
+      font-size:.95rem;
+      margin-bottom:14px;
+    }
+
+    .service-card ul{
+      display:grid;
+      gap:8px;
+    }
+
+    .service-card li{
+      list-style:none;
+      color:#efefef;
+      font-size:.92rem;
+      display:flex;
+      gap:8px;
+    }
+
+    .service-card li::before{
+      content:"•";
+      color:var(--primary);
+    }
+
+    .process-card{
+      padding:24px;
+    }
+
+    .step-number{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:rgba(255,106,0,.1);
+      color:#ffd4b7;
+      font-weight:800;
+      margin-bottom:14px;
+      border:1px solid rgba(255,106,0,.18);
+    }
+
+    .process-card h3{
+      margin-bottom:8px;
+      font-size:1.04rem;
+    }
+
+    .process-card p{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .gallery-card{
+      overflow:hidden;
+    }
+
+    .gallery-card img,
+    .gallery-card video{
+      width:100%;
+      height:245px;
+      object-fit:cover;
+      cursor:pointer;
+      transition:transform .35s ease;
+    }
+
+    .gallery-card:hover img,
+    .gallery-card:hover video{
+      transform:scale(1.04);
+    }
+
+    .gallery-copy{
+      padding:18px;
+    }
+
+    .gallery-copy h3{
+      font-size:1.05rem;
+      margin-bottom:8px;
+    }
+
+    .gallery-copy p{
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .testimonial{
+      padding:24px;
+    }
+
+    .stars{
+      color:#ffb347;
+      margin-bottom:12px;
+      letter-spacing:2px;
+    }
+
+    .testimonial p{
+      color:#f1f1f1;
+      margin-bottom:16px;
+    }
+
+    .testimonial strong{
+      display:block;
+      font-size:.98rem;
+    }
+
+    .testimonial span{
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .faq-item{
+      padding:22px;
+    }
+
+    .faq-item h3{
+      font-size:1.03rem;
+      margin-bottom:8px;
+    }
+
+    .faq-item p{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .cta-box{
+      position:relative;
+      overflow:hidden;
+      border-radius:32px;
+      padding:34px;
+      background:
+        linear-gradient(135deg, rgba(255,106,0,.16), rgba(255,106,0,.05)),
+        rgba(255,255,255,.02);
+      border:1px solid rgba(255,106,0,.16);
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .cta-box::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      right:-60px;
+      top:-60px;
+      filter:blur(10px);
+    }
+
+    .cta-box h2{
+      font-size:clamp(1.8rem, 3vw, 2.5rem);
+      margin-bottom:10px;
+      line-height:1.05;
+    }
+
+    .cta-box p{
+      color:#f0e8e1;
+      max-width:680px;
+    }
+
+    .contact-card{
+      padding:28px;
+    }
+
+    .contact-card h3{
+      font-size:1.45rem;
+      margin-bottom:10px;
+    }
+
+    .contact-card > p{
+      color:var(--muted);
+      margin-bottom:20px;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:14px;
+      margin-bottom:22px;
+    }
+
+    .info-card{
+      padding:18px;
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+    }
+
+    .info-icon{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,106,0,.12);
+      border:1px solid rgba(255,106,0,.18);
+      flex:0 0 auto;
+    }
+
+    .info-card strong{
+      display:block;
+      margin-bottom:5px;
+    }
+
+    .info-card span,
+    .info-card a{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .map-wrap{
+      min-height:100%;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      background:#101010;
+    }
+
+    .map-wrap iframe{
+      width:100%;
+      height:100%;
+      min-height:520px;
+      border:0;
+      display:block;
+    }
+
+    footer{
+      padding:28px 0 44px;
+      border-top:1px solid rgba(255,255,255,.06);
+      background:rgba(0,0,0,.18);
+    }
+
+    .footer-grid{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .footer-copy strong{
+      display:block;
+      margin-bottom:6px;
+    }
+
+    .footer-copy span{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .footer-links a{
+      color:var(--muted);
+      font-size:.94rem;
+      padding:8px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.03);
+      border:1px solid rgba(255,255,255,.06);
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:999;
+      width:64px;
+      height:64px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(180deg, #29cc67, #1ca854);
+      color:white;
+      box-shadow:0 16px 32px rgba(0,0,0,.3);
+      font-size:1.5rem;
+      border:3px solid rgba(255,255,255,.15);
+    }
+
+    .fade{
+      opacity:0;
+      transform:translateY(22px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+
+    .fade.show{
+      opacity:1;
+      transform:none;
+    }
+
+    .lightbox{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.92);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:2000;
+    }
+
+    .lightbox.show{display:flex}
+
+    .lightbox img{
+      max-width:min(1000px, 92vw);
+      max-height:88vh;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.1);
+      box-shadow:var(--shadow);
+    }
+
+    .close{
+      position:absolute;
+      top:20px;
+      right:26px;
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.08);
+      color:white;
+      font-size:1.9rem;
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,.1);
+    }
+
+    @media (max-width: 1080px){
+      .services-grid,
+      .process-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .benefits{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .gallery-grid,
+      .testimonials-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero-grid,
+      .contact-grid,
+      .cta-box{grid-template-columns:1fr;display:grid}
+      .cta-box{justify-content:start}
+    }
+
+    @media (max-width: 820px){
+      .menu,.header-cta .btn{display:none}
+      .hamburger{display:grid;place-items:center}
+      .mobile-menu.show{display:block}
+      .hero{padding-top:48px}
+      .hero-features{grid-template-columns:1fr}
+      .stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+
+    @media (max-width: 640px){
+      .section{padding:68px 0}
+      .brand img{width:64px;height:64px}
+      .hero-copy h1{font-size:2.2rem}
+      .services-grid,
+      .process-grid,
+      .gallery-grid,
+      .testimonials-grid,
+      .faq-grid,
+      .benefits,
+      .contact-grid{grid-template-columns:1fr}
+      .cta-box{padding:26px}
+      .stats{grid-template-columns:1fr}
+      .footer-grid{align-items:flex-start}
+      .map-wrap iframe{min-height:380px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand" aria-label="Ir al inicio">
+        <img src="logo.png" alt="Logo Controles Concepción" />
+        <div class="brand-copy">
+          <strong>Controles Concepción</strong>
+          <span>Duplicado, programación y soporte</span>
+        </div>
+      </a>
+
+      <nav class="menu" aria-label="Menú principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Cómo trabajamos</a>
+        <a href="#trabajos">Trabajos reales</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+
+      <div class="header-cta">
+        <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <button class="hamburger" type="button" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+      </div>
+    </div>
+
+    <div class="container mobile-menu" id="mobileMenu">
+      <nav>
+        <a href="#inicio" onclick="toggleMenu()">Inicio</a>
+        <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+        <a href="#proceso" onclick="toggleMenu()">Cómo trabajamos</a>
+        <a href="#trabajos" onclick="toggleMenu()">Trabajos reales</a>
+        <a href="#opiniones" onclick="toggleMenu()">Opiniones</a>
+        <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy fade">
+          <div class="eyebrow">Atención en Concepción • Presencial y a domicilio según disponibilidad</div>
+          <h1>Duplicado y programación de controles con atención rápida y profesional</h1>
+          <p>
+            Soluciones para <strong>controles automotrices</strong>, <strong>portones eléctricos</strong>,
+            duplicado, sincronización y diagnóstico. Atención clara, trabajo real y respaldo en cada servicio.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Solicitar cotización</a>
+            <a class="btn-outline" href="#trabajos">Ver trabajos reales</a>
+          </div>
+
+          <div class="hero-features">
+            <div class="mini-pill">✅ Atención cercana y directa</div>
+            <div class="mini-pill">✅ Evaluación según modelo</div>
+            <div class="mini-pill">✅ Respuesta por WhatsApp</div>
+          </div>
+        </div>
+
+        <aside class="hero-card fade">
+          <div class="trust-badge">● Servicio técnico con enfoque práctico</div>
+          <h3>¿Qué puedes cotizar aquí?</h3>
+          <p>Desde duplicados simples hasta programación de mandos y soluciones para recuperar acceso en portones o vehículos.</p>
+
+          <ul class="hero-list">
+            <li>Duplicado de controles de portón</li>
+            <li>Programación de controles automotrices</li>
+            <li>Diagnóstico de funcionamiento</li>
+            <li>Venta de controles nuevos según requerimiento</li>
+            <li>Atención a domicilio según disponibilidad</li>
+          </ul>
+
+          <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Enviar foto del control</a>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>+1</strong>
+              <span>Canal directo</span>
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Enfocado en solución</span>
+            </div>
+            <div class="stat">
+              <strong>Local</strong>
+              <span>Concepción</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="container benefits fade">
+        <article class="benefit-card">
+          <strong>Diagnóstico claro</strong>
+          <p>Antes de avanzar, se revisa compatibilidad, estado del mando y tipo de programación requerida.</p>
+        </article>
+        <article class="benefit-card">
+          <strong>Trabajo real y visible</strong>
+          <p>Muestra de casos reales para generar confianza y que el cliente vea resultados concretos.</p>
+        </article>
+        <article class="benefit-card">
+          <strong>Atención rápida</strong>
+          <p>Contacto directo por WhatsApp para responder más rápido y coordinar según necesidad.</p>
+        </article>
+        <article class="benefit-card">
+          <strong>En terreno cuando se puede</strong>
+          <p>Servicio a domicilio disponible según ubicación, carga de trabajo y tipo de procedimiento.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section-header fade">
+          <div class="eyebrow">Servicios principales</div>
+          <h2>Una web que explica mejor lo que haces vende mejor</h2>
+          <p>Organicé tus servicios para que el cliente entienda rápido qué ofreces, cómo trabajas y por qué debería escribirte.</p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card fade">
+            <div class="service-top">
+              <div class="service-icon">🚗</div>
+              <span class="service-tag">Automotriz</span>
+            </div>
+            <h3>Controles automotrices</h3>
+            <p>Duplicado y programación de controles para distintas marcas y modelos, con revisión de funcionamiento.</p>
+            <ul>
+              <li>Sincronización de mandos</li>
+              <li>Revisión según modelo</li>
+              <li>Pruebas antes de entregar</li>
+            </ul>
+          </article>
+
+          <article class="service-card fade">
+            <div class="service-top">
+              <div class="service-icon">🏠</div>
+              <span class="service-tag">Residencial</span>
+            </div>
+            <h3>Controles de portón</h3>
+            <p>Copia y configuración de controles para casas, condominios, edificios y accesos automatizados.</p>
+            <ul>
+              <li>Duplicado de mandos</li>
+              <li>Configuración y prueba de alcance</li>
+              <li>Apoyo para recuperar acceso</li>
+            </ul>
+          </article>
+
+          <article class="service-card fade">
+            <div class="service-top">
+              <div class="service-icon">🛠️</div>
+              <span class="service-tag">Técnico</span>
+            </div>
+            <h3>Programación y diagnóstico</h3>
+            <p>Configuración de controles nuevos o existentes con apoyo de equipos de programación y revisión técnica.</p>
+            <ul>
+              <li>Programación de mandos</li>
+              <li>Detección de fallas básicas</li>
+              <li>Orientación clara al cliente</li>
+            </ul>
+          </article>
+
+          <article class="service-card fade">
+            <div class="service-top">
+              <div class="service-icon">📍</div>
+              <span class="service-tag">Coordinado</span>
+            </div>
+            <h3>Atención a domicilio</h3>
+            <p>Disponibilidad para servicios en terreno según tipo de trabajo, ubicación y coordinación previa.</p>
+            <ul>
+              <li>Concepción y alrededores</li>
+              <li>Atención según agenda</li>
+              <li>Ideal para casos puntuales</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proceso">
+      <div class="container">
+        <div class="section-header fade">
+          <div class="eyebrow">Cómo trabajas</div>
+          <h2>Un proceso simple genera más confianza</h2>
+          <p>Este bloque hace que la web se vea más seria porque le explica al cliente qué esperar desde el primer contacto.</p>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card fade">
+            <div class="step-number">1</div>
+            <h3>Envío de foto</h3>
+            <p>El cliente manda una imagen del control o llave por WhatsApp para revisar compatibilidad.</p>
+          </article>
+
+          <article class="process-card fade">
+            <div class="step-number">2</div>
+            <h3>Evaluación</h3>
+            <p>Se confirma si el servicio corresponde a duplicado, programación, venta o diagnóstico.</p>
+          </article>
+
+          <article class="process-card fade">
+            <div class="step-number">3</div>
+            <h3>Coordinación</h3>
+            <p>Se agenda atención presencial o en terreno según disponibilidad y tipo de trabajo.</p>
+          </article>
+
+          <article class="process-card fade">
+            <div class="step-number">4</div>
+            <h3>Entrega y prueba</h3>
+            <p>Antes de finalizar, se verifica funcionamiento para entregar una solución lista para usar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trabajos">
+      <div class="container">
+        <div class="section-header fade">
+          <div class="eyebrow">Casos reales</div>
+          <h2>Trabajos que muestran experiencia de verdad</h2>
+          <p>Aquí es donde más vale la pena meter tus fotos reales. Mientras más auténticas sean, más confianza transmiten.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-card fade">
+            <video controls playsinline preload="metadata" aria-label="Video de duplicado Hyundai Tucson 2010">
+              <source src="videoDuplicadoHyundaiTucson2010.mp4" type="video/mp4" />
+              Tu navegador no soporta videos HTML5.
+            </video>
+            <div class="gallery-copy">
+              <h3>Hyundai Tucson 2010 · Caso en video</h3>
+              <p>Video real del proceso de duplicado y programación del mando. Ideal para mostrar trabajo real y generar más confianza.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card fade">
+            <img src="Duplicado_Mando_Casa.jpg" alt="Duplicado de control de portón" onclick="openImg(this)" />
+            <div class="gallery-copy">
+              <h3>Control de portón residencial</h3>
+              <p>Configuración y duplicado para acceso domiciliario con verificación de alcance.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card fade">
+            <img src="programacion.jpg" alt="Programación de control remoto" onclick="openImg(this)" />
+            <div class="gallery-copy">
+              <h3>Programación técnica</h3>
+              <p>Sincronización de mando y comprobación de respuesta antes de entregar.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="opiniones">
+      <div class="container">
+        <div class="section-header fade">
+          <div class="eyebrow">Confianza del cliente</div>
+          <h2>Opiniones que refuerzan la decisión de compra</h2>
+          <p>Reemplacé los testimonios ultra cortos por bloques más creíbles. Luego puedes cambiarlos por reseñas reales.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <article class="testimonial fade">
+            <div class="stars">★★★★★</div>
+            <p>Muy buena atención. Respondieron rápido, revisaron el control y quedó funcionando sin problemas.</p>
+            <strong>Cliente de Concepción</strong>
+            <span>Servicio de duplicado</span>
+          </article>
+
+          <article class="testimonial fade">
+            <div class="stars">★★★★★</div>
+            <p>Se nota que saben del tema. Explicaron bien la solución y el trabajo quedó probado antes de entregar.</p>
+            <strong>Cliente automotriz</strong>
+            <span>Programación de mando</span>
+          </article>
+
+          <article class="testimonial fade">
+            <div class="stars">★★★★★</div>
+            <p>Atención rápida y clara por WhatsApp. Eso da confianza desde el primer contacto.</p>
+            <strong>Cliente residencial</strong>
+            <span>Control de portón</span>
+          </article>
+        </div>
+
+        <div style="text-align:center; margin-top:24px;" class="fade">
+          <a class="btn-outline" href="https://www.google.com/search?q=Controles+Concepcion+Tucapel+866" target="_blank" rel="noopener noreferrer">Ver opiniones en Google</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-box fade">
+          <div>
+            <h2>¿Tienes el control contigo?</h2>
+            <p>Envía una foto por WhatsApp y revisamos qué solución corresponde. Mientras más clara la foto, más rápida será la orientación.</p>
+          </div>
+          <div>
+            <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Enviar foto ahora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header fade">
+          <div class="eyebrow">Preguntas frecuentes</div>
+          <h2>Respuestas que ayudan a cerrar más contactos</h2>
+          <p>Este bloque sirve mucho cuando un cliente todavía está dudando en escribirte.</p>
+        </div>
+
+        <div class="faq-grid">
+          <article class="faq-item fade">
+            <h3>¿Trabajan con cualquier modelo?</h3>
+            <p>Depende del tipo de control, sistema y compatibilidad. Lo ideal es enviar una foto por WhatsApp para revisar el caso.</p>
+          </article>
+          <article class="faq-item fade">
+            <h3>¿Atienden a domicilio?</h3>
+            <p>Sí, según disponibilidad, ubicación y tipo de servicio requerido.</p>
+          </article>
+          <article class="faq-item fade">
+            <h3>¿Cuánto demora el servicio?</h3>
+            <p>Varía según el trabajo, pero siempre se intenta dar una respuesta clara y rápida desde el primer contacto.</p>
+          </article>
+          <article class="faq-item fade">
+            <h3>¿Cómo cotizo?</h3>
+            <p>Lo más rápido es enviar una foto del control o llave, idealmente mostrando ambos lados y cualquier referencia visible.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contacto">
+      <div class="container contact-grid">
+        <div class="contact-card fade">
+          <div class="eyebrow">Contacto y ubicación</div>
+          <h3>Controles Concepción</h3>
+          <p>Atención presencial en Concepción y coordinación por WhatsApp para cotizaciones, dudas y evaluación de compatibilidad.</p>
+
+          <div class="contact-list">
+            <div class="info-card">
+              <div class="info-icon">📍</div>
+              <div>
+                <strong>Dirección</strong>
+                <span>Tucapel 866, Concepción, Chile</span>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">💬</div>
+              <div>
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">+56 9 7795 6214</a>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-icon">📷</div>
+              <div>
+                <strong>Instagram</strong>
+                <a href="https://www.instagram.com/controlesconcepcion/" target="_blank" rel="noopener noreferrer">@controlesconcepcion</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer">Hablar por WhatsApp</a>
+            <a class="btn-outline" href="https://www.instagram.com/controlesconcepcion/" target="_blank" rel="noopener noreferrer">Ver Instagram</a>
+          </div>
+        </div>
+
+        <div class="map-wrap fade">
+          <iframe
+            src="https://maps.google.com/maps?q=Tucapel%20866%20Concepcion&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            title="Mapa de ubicación Controles Concepción"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-copy">
+        <strong>Controles Concepción</strong>
+        <span>Duplicado y programación de controles automotrices y de portón en Concepción.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/56977956214" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp">✆</a>
+
+  <div class="lightbox" id="lightbox" onclick="closeImg(event)">
+    <span class="close" aria-label="Cerrar imagen">×</span>
+    <img id="lightbox-img" alt="Imagen ampliada" />
+  </div>
+
+  <script>
+    const mobileMenu = document.getElementById('mobileMenu');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    function toggleMenu(){
+      mobileMenu.classList.toggle('show');
+    }
+
+    function openImg(img){
+      lightbox.classList.add('show');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || 'Imagen ampliada';
+    }
+
+    function closeImg(e){
+      if(e.target.id === 'lightbox' || e.target.classList.contains('close')){
+        lightbox.classList.remove('show');
+      }
+    }
+
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        lightbox.classList.remove('show');
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Duplicado y programación ([estebansalazarsantis.github.io](https://estebansalazarsantis.github.io/controlesconcepcionweb/))motrices y de portón en Concepción. Atención presencial y a domicilio según disponibilidad." />
   <title>Controles Concepción | Duplicado y programación de controles</title>
 
